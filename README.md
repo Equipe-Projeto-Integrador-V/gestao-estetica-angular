@@ -2,10 +2,10 @@
 
 <h1>Versão utilizada:</h1>
 
-Angular CLI versão 12.1.1.  (ng --version)
-Node v12.22.7  (node --version)
-Typescript versão 4.3.5  (tsc -v)
-Npm versão 6.14.15 (npm --version)
+`Angular CLI v12.1.1.`  (ng --version) <br>
+`Node v12.22.7`  (node --version) <br>
+`Typescript v4.3.5`  (tsc -v) <br>
+`Npm v6.14.15` (npm --version) <br>
 
 
 ## Instalação e subir a aplicação
