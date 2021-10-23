@@ -10,5 +10,5 @@
 
 ## Instalação e subir a aplicação
 
-Baixar o projeto, na pasta rodar o comando `npm install`, concluído basta subir o projeto com comando `ng serve` e navegar `http://localhost:4200/`.
+Baixar o projeto, navegar até a pasta e rodar o seguinte comando `npm install`, concluído basta subir o projeto com comando `ng serve` e navegar `http://localhost:4200/`.
 
