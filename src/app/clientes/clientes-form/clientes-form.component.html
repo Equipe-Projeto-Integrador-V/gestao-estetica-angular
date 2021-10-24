@@ -3,13 +3,12 @@
   <li class="breadcrumb-item active">Cadastro</li>
 </ol>
 <div class="container">
-  <form>
+  <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="row">
       <div class="col-md-1">
         <div class="form-group">
-          {{cliente.nome}}
           <label>ID:</label>
-          <input type="text" class="form-control" disabled="true" />
+          <input type="text" [ngModel]="cliente.id" name="id" class="form-control" disabled="true"  />
         </div>
       </div>
       <div class="col-md-5">
@@ -24,13 +23,13 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>CPF: *</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" [(ngModel)]="cliente.cpf" name="cpf" />
         </div>
       </div>
       <div class="col-md-2">
         <div class="form-group">
           <label>Telefone:</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" [(ngModel)]="cliente.telefone" name="telefone"/>
         </div>
       </div>
     </div>
@@ -39,19 +38,19 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>E-mail:</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" [(ngModel)]="cliente.email" name="email" />
         </div>
       </div>
       <div class="col-md-1">
         <div class="form-group">
           <label>UF:</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" [(ngModel)]="cliente.uf" name="uf"/>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-2">
-        <button type="submit" class="btn btn-success"> <i class="fa fa-save"></i> Salvar</button>
+        <button type="submit" class="btn btn-success" > <i class="fa fa-save"></i> Salvar</button>
       </div>
     </div>
   </form>

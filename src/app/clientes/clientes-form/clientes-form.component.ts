@@ -18,8 +18,8 @@ export class ClientesFormComponent implements OnInit {
     //console.log(this.cliente.nome)
   }
 
-  adicionar(){
-    console.log(this.cliente.nome)
+  onSubmit(){
+    console.log(this.cliente)
   }
 
 }
