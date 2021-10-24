@@ -3,18 +3,30 @@
   <li class="breadcrumb-item active">Cadastro</li>
 </ol>
 <div class="container">
-  <form>
+  <form #funcionarioForm="ngForm" (ngSubmit)="onSubmit()">
+    <!--alerta inicio-->
     <div class="row">
-      <div class="col-md-1">
+      <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf = "success == true">
+          Funcionario salvo/atualizado com sucesso!!!
+        </div>
+        <div class="alert alert-danger" role="alert" *ngFor = "let erro of errors">
+          {{ erro }}
+        </div>
+      </div>
+    </div>
+      <!--alerta fim-->
+    <div class="row">
+      <div class="col-md-1" *ngIf="funcionario.id">
         <div class="form-group">
           <label>ID:</label>
-          <input type="text" class="form-control" disabled="true" />
+          <input type="text" [ngModel]="funcionario.id" name="id" class="form-control" disabled="true" />
         </div>
       </div>
       <div class="col-md-5">
         <div class="form-group">
           <label>Nome: *</label>
-          <input type="text" class="form-control" name="nome"/>
+          <input type="text" class="form-control" [(ngModel)]="funcionario.nome" name="nome"/>
         </div>
       </div>
     </div>
@@ -23,13 +35,13 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>CPF: *</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" [(ngModel)]="funcionario.cpf" name="cpf"/>
         </div>
       </div>
       <div class="col-md-2">
         <div class="form-group">
           <label>Telefone:</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" [(ngModel)]="funcionario.telefone" name="telefone"/>
         </div>
       </div>
     </div>
@@ -38,13 +50,13 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>E-mail:</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" [(ngModel)]="funcionario.email" name="email"/>
         </div>
       </div>
       <div class="col-md-1">
         <div class="form-group">
           <label>Comissão:</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" [(ngModel)]="funcionario.comissao" name="comissao"/>
         </div>
       </div>
     </div>
@@ -56,13 +68,13 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Login:</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" [(ngModel)]="funcionario.login" name="login"/>
         </div>
       </div>
       <div class="col-md-1">
         <div class="form-group">
           <label>Senha:</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" [(ngModel)]="funcionario.senha" name="senha"/>
         </div>
       </div>
     </div>

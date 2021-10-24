@@ -1,3 +1,4 @@
+import { ClientesService } from './clientes.service';
 import { ContasPagarModule } from './contas-pagar/contas-pagar.module';
 import { ContasReceberModule } from './contas-receber/contas-receber.module';
 import { OrdensDeServicoModule } from './ordens-de-servico/ordens-de-servico.module';
@@ -12,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ClientesModule } from './clientes/clientes.module';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { ClientesModule } from './clientes/clientes.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     TemplateModule,
     ClientesModule,
@@ -29,9 +32,12 @@ import { ClientesModule } from './clientes/clientes.module';
     AgendamentosModule,
     OrdensDeServicoModule,
     ContasReceberModule,
-    ContasPagarModule
+    ContasPagarModule,
+
   ],
-  providers: [],
+  providers: [
+    ClientesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

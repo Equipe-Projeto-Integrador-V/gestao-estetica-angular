@@ -4,8 +4,20 @@
 </ol>
 <div class="container">
   <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
+    <!--alerta inicio-->
     <div class="row">
-      <div class="col-md-1">
+      <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf = "success == true">
+          Cliente salvo/atualizado com sucesso!!!
+        </div>
+        <div class="alert alert-danger" role="alert" *ngFor = "let erro of errors">
+          {{ erro }}
+        </div>
+      </div>
+    </div>
+      <!--alerta fim-->
+    <div class="row">
+      <div class="col-md-1" *ngIf="cliente.id">
         <div class="form-group">
           <label>ID:</label>
           <input type="text" [ngModel]="cliente.id" name="id" class="form-control" disabled="true"  />
