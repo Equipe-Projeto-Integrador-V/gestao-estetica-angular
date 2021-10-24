@@ -1,3 +1,10 @@
+import { ContasPagarModule } from './contas-pagar/contas-pagar.module';
+import { ContasReceberModule } from './contas-receber/contas-receber.module';
+import { OrdensDeServicoModule } from './ordens-de-servico/ordens-de-servico.module';
+import { AgendamentosModule } from './agendamentos/agendamentos.module';
+import { FornecedoresModule } from './fornecedores/fornecedores.module';
+import { ServicosModule } from './servicos/servicos.module';
+import { FuncionariosModule } from './funcionarios/funcionarios.module';
 import { TemplateModule } from './template/template.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,7 +22,14 @@ import { ClientesModule } from './clientes/clientes.module';
     BrowserModule,
     AppRoutingModule,
     TemplateModule,
-    ClientesModule
+    ClientesModule,
+    FuncionariosModule,
+    ServicosModule,
+    FornecedoresModule,
+    AgendamentosModule,
+    OrdensDeServicoModule,
+    ContasReceberModule,
+    ContasPagarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
