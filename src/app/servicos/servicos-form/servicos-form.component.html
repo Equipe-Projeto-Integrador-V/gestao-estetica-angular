@@ -1,1 +1,56 @@
-<p>servicos-form works!</p>
+<h1 class="mt-4">Serviços</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Cadastro</li>
+</ol>
+<div class="container">
+  <form #servicoForm="ngForm" (ngSubmit)="onSubmit()">
+    <!--alerta inicio-->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf = "success == true">
+          Serviço salvo/atualizado com sucesso!!!
+        </div>
+        <div class="alert alert-danger" role="alert" *ngFor = "let erro of errors">
+          {{ erro }}
+        </div>
+      </div>
+    </div>
+      <!--alerta fim-->
+    <div class="row">
+      <div class="col-md-1" *ngIf="servico.id">
+        <div class="form-group">
+          <label>ID:</label>
+          <input type="text" [ngModel]="servico.id" name="id" class="form-control" disabled="true"  />
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <label>Descrição: *</label>
+          <input type="text" class="form-control" [(ngModel)]="servico.descricao" name="descricao"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Preço de Custo: *</label>
+          <input type="text" class="form-control" [(ngModel)]="servico.precoCusto" name="precoCusto" />
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Preço de Venda: *</label>
+          <input type="text" class="form-control" [(ngModel)]="servico.precoVenda" name="precoVenda"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-success" > <i class="fa fa-save"></i> Salvar</button>
+      </div>
+    </div>
+  </form>
+</div>
+
