@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ClientesService } from './../../clientes.service';
 import { Cliente } from './../cliente';
 import { Component, OnInit } from '@angular/core';
@@ -17,7 +18,7 @@ export class ClientesFormComponent implements OnInit {
   //array responsavel por receber os erros do controller-advice no backend
   errors? : string[] | null;
 
-  constructor( private clienteService : ClientesService ) {
+  constructor( private clienteService : ClientesService, private router : Router ) {
     this.cliente = new Cliente();
   }
 
@@ -42,4 +43,7 @@ export class ClientesFormComponent implements OnInit {
           })
   }
 
+  voltarParaListagem(){
+    this.router.navigate( ['/clientes-lista']);
+  }
 }
