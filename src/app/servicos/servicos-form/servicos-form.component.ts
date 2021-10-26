@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { ServicosService } from './../../servicos.service';
 import { Servico } from './../servico';
 import { Component, OnInit } from '@angular/core';
@@ -18,11 +19,32 @@ export class ServicosFormComponent implements OnInit {
   //array responsavel por receber os erros do controller-advice no backend
   errors? : string[] | null;
 
-  constructor( private servicoService : ServicosService) {
+  id? : any;  //id passado via parametro
+
+
+  constructor(
+    private servicoService : ServicosService,
+    private router : Router,
+    private activatedRouter : ActivatedRoute
+    ) {
     this.servico = new Servico();
   }
 
   ngOnInit(): void {
+
+       //seta o form com as infos do id passado via params
+       let params = this.activatedRouter.params;
+       params.forEach( value =>{
+        if(value.id){
+          this.id = value.id;
+          this.servicoService
+          .getServicosById(this.id)
+          .subscribe(
+            response => this.servico = response,
+            errorResponse => this.servico = new Servico()
+          )
+        }
+      });
   }
 
   onSubmit(){
@@ -39,6 +61,10 @@ export class ServicosFormComponent implements OnInit {
             this.errors = errorResponse.error.errors;
             console.log(errorResponse.error.errors)
           })
+  }
+
+  voltarParaListagem(){
+    this.router.navigate( ['/servicos-lista']);
   }
 
 }

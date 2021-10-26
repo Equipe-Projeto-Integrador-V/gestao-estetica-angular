@@ -4,18 +4,21 @@ import { CommonModule } from '@angular/common';
 
 import { ServicosRoutingModule } from './servicos-routing.module';
 import { ServicosFormComponent } from './servicos-form/servicos-form.component';
+import { ServicosListaComponent } from './servicos-lista/servicos-lista.component';
 
 
 @NgModule({
   declarations: [
-    ServicosFormComponent
+    ServicosFormComponent,
+    ServicosListaComponent
   ],
   imports: [
     CommonModule,
     ServicosRoutingModule,
     FormsModule
   ], exports: [
-    ServicosFormComponent
+    ServicosFormComponent,
+    ServicosListaComponent
   ]
 })
 export class ServicosModule { }

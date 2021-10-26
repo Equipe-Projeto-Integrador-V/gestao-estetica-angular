@@ -1,4 +1,4 @@
-<h1 class="mt-4">Clientes</h1>
+<h1 class="mt-4">Funcionarios</h1>
 <ol class="breadcrumb mb-4">
   <li class="breadcrumb-item active">Consulta</li>
 </ol>
@@ -17,22 +17,26 @@
             <th>ID</th>
             <th>Nome</th>
             <th>CPF</th>
-            <th>Telefone</th>
+            <th>Login</th>
+            <th>Senha</th>
             <th>Email</th>
-            <th>UF</th>
+            <th>Telefone</th>
+            <th>Comissão</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let c of clientes">
-            <td>{{c.id}}</td>
-            <td>{{c.nome}}</td>
-            <td>{{c.cpf}}</td>
-            <td>{{c.telefone}}</td>
-            <td>{{c.email}}</td>
-            <td>{{c.uf}}</td>
+          <tr *ngFor="let f of funcionarios">
+            <td>{{f.id}}</td>
+            <td>{{f.nome}}</td>
+            <td>{{f.cpf}}</td>
+            <td>{{f.login}}</td>
+            <td>{{f.senha}}</td>
+            <td>{{f.email}}</td>
+            <td>{{f.telefone}}</td>
+            <td>{{f.comissao}}</td>
             <td>
-              <button class="btn btn-primary" routerLink="/clientes-form/{{c.id}}">
+              <button class="btn btn-primary" routerLink="/funcionarios-form/{{f.id}}">
                 <i class="fas fa-edit"></i>
               </button>
             </td>

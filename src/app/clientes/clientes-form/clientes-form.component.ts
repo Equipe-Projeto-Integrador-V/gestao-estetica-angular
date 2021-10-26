@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ClientesService } from './../../clientes.service';
 import { Cliente } from './../cliente';
 import { Component, OnInit } from '@angular/core';
@@ -18,12 +18,31 @@ export class ClientesFormComponent implements OnInit {
   //array responsavel por receber os erros do controller-advice no backend
   errors? : string[] | null;
 
-  constructor( private clienteService : ClientesService, private router : Router ) {
+  id? : any;  //id passado via parametro
+
+  constructor(
+    private clienteService : ClientesService,
+    private router : Router,
+    private activatedRoute : ActivatedRoute
+    ) {
     this.cliente = new Cliente();
   }
 
   ngOnInit(): void {
-    //console.log(this.cliente.nome)
+
+    //seta o form com as infos do id passado via params
+    let params = this.activatedRoute.params;
+    params.forEach( value =>{
+     if(value.id){
+       this.id = value.id;
+       this.clienteService
+       .getClienteById(this.id)
+       .subscribe(
+         response => this.cliente = response,
+         errorResponse => this.cliente = new Cliente()
+       )
+     }
+   });
   }
 
   onSubmit(){

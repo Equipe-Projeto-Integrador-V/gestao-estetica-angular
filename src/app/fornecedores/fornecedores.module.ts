@@ -4,18 +4,21 @@ import { CommonModule } from '@angular/common';
 
 import { FornecedoresRoutingModule } from './fornecedores-routing.module';
 import { FornecedoresFormComponent } from './fornecedores-form/fornecedores-form.component';
+import { FornecedoresListaComponent } from './fornecedores-lista/fornecedores-lista.component';
 
 
 @NgModule({
   declarations: [
-    FornecedoresFormComponent
+    FornecedoresFormComponent,
+    FornecedoresListaComponent
   ],
   imports: [
     CommonModule,
     FornecedoresRoutingModule,
     FormsModule
   ], exports: [
-    FornecedoresFormComponent
+    FornecedoresFormComponent,
+    FornecedoresListaComponent
   ]
 })
 export class FornecedoresModule { }
