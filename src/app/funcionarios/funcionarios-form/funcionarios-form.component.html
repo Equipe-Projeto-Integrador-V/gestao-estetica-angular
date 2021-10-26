@@ -3,6 +3,12 @@
   <li class="breadcrumb-item active">{{ funcionario.id ? 'Edição' : 'Cadastro'}}</li>
 </ol>
 <div class="container">
+  <div class="alert alert-warning" role="alert">
+    <h4 class="alert-heading">Aviso!!!</h4>
+    <p>Visibilidade temporária.</p>
+    <hr>
+    <p class="mb-0">Após implementar a autenticação, 'Funcionarios' só estará disponivel no navbar de usuários com ROLES 'Admin'.</p>
+  </div>
   <form #funcionarioForm="ngForm" (ngSubmit)="onSubmit()">
     <!--alerta inicio-->
     <div class="row">
@@ -61,9 +67,6 @@
       </div>
     </div>
 
-    <div class="alert alert-danger">
-    A VISUALIZAÇÃO DO LOGIN E SENHA SERA MODIFICADO, NA AUTH SERÁ CRIADO UM ROLE: ADMIN E USER
-    </div>
     <div class="row">
       <div class="col-md-4">
         <div class="form-group">
@@ -81,7 +84,7 @@
 
 
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-3">
         <button type="submit" class="btn btn-success" *ngIf="!funcionario.id"> <i class="fa fa-save"></i> Salvar</button>
         <button type="submit" class="btn btn-primary" *ngIf="funcionario.id"> <i class="fa fa-sync-alt"></i> Atualizar</button>
         <button type="button" class="btn btn-danger ml-2" (click)="voltarParaListagem()"> <i class="fa fa-arrow-alt-circle-left"></i> Voltar</button>
