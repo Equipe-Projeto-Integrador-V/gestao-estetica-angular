@@ -11,8 +11,11 @@ import { FuncionariosService } from 'src/app/funcionarios.service';
 export class FuncionariosListaComponent implements OnInit {
 
   funcionarios : Funcionario[] = []; //array de clientes, armazenar todos clientes vindos da api
+  funcionarioSelecionado : Funcionario;
 
-  constructor( private funcionarioService : FuncionariosService, private router : Router) { }
+  constructor( private funcionarioService : FuncionariosService, private router : Router) {
+    this.funcionarioSelecionado = new Funcionario();
+  }
 
   ngOnInit(): void {
 
@@ -24,6 +27,10 @@ export class FuncionariosListaComponent implements OnInit {
 
  novoCadastro(){
    this.router.navigate( ['/funcionarios-form'] )
+ }
+
+ preparaDelecao( funcionario : Funcionario ){
+    this.funcionarioSelecionado = funcionario;
  }
 
 }

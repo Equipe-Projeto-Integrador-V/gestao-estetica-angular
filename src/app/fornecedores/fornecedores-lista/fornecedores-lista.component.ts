@@ -11,10 +11,13 @@ import { Component, OnInit } from '@angular/core';
 export class FornecedoresListaComponent implements OnInit {
 
   fornecedores : Fornecedor[] = []; //array de clientes, armazenar todos clientes vindos da api
+  fornecedorSelecionado : Fornecedor;
 
   constructor( private fornecedoresService : FornecedoresService,
                private router : Router
-               ) { }
+               ) {
+                 this.fornecedorSelecionado = new Fornecedor();
+               }
 
   ngOnInit(): void {
 
@@ -25,6 +28,11 @@ export class FornecedoresListaComponent implements OnInit {
 
   novoCadastro(){
     this.router.navigate( ['/fornecedores-form'] )
+  }
+
+  preparaDelecao( fornecedor : Fornecedor){
+
+    this.fornecedorSelecionado = fornecedor;
   }
 
 }

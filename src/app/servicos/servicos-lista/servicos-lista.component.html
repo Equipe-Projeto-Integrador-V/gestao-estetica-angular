@@ -31,11 +31,31 @@
               <button class="btn btn-primary" routerLink="/servicos-form/{{s.id}}">
                 <i class="fas fa-edit"></i>
               </button>
+
+              <button class="btn btn-danger ml-2" (click)="preparaDelecao(s)" data-toggle="modal" data-target="#modalDelecao">
+                <i class="fas fa-trash"></i>
+              </button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
+  <div id="modalDelecao" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Confirmação <i class="fas fa-exclamation-triangle"></i></h4>
+        </div>
+        <div class="modal-body" *ngIf="servicoSelecionado">
+            Deseja <span class="corVermelha">DELETAR</span> o(a) SERVIÇO <strong>{{ servicoSelecionado.descricao }}</strong>?
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-success">Sim</button>
+          <button class="btn btn-danger" data-dismiss="modal">Não</button>
+        </div>
+      </div>
+    </div>
+</div>
 </div>
 

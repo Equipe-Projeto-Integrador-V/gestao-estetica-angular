@@ -11,10 +11,13 @@ import { Component, OnInit } from '@angular/core';
 export class ServicosListaComponent implements OnInit {
 
   servicos : Servico[] = []; //array de clientes, armazenar todos clientes vindos da api
+  servicoSelecionado : Servico;
 
   constructor( private servicoService : ServicosService,
     private router : Router
-    ) { }
+    ) {
+      this.servicoSelecionado = new Servico();
+    }
 
   ngOnInit(): void {
 
@@ -25,6 +28,11 @@ export class ServicosListaComponent implements OnInit {
 
   novoCadastro(){
     this.router.navigate( ['/servicos-form'] )
+  }
+
+  preparaDelecao( servico : Servico){
+
+    this.servicoSelecionado = servico;
   }
 
 }
