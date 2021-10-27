@@ -32,19 +32,31 @@ export class ServicosFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-       //seta o form com as infos do id passado via params
-       let params = this.activatedRouter.params;
-       params.forEach( value =>{
-        if(value.id){
-          this.id = value.id;
-          this.servicoService
-          .getServicosById(this.id)
-          .subscribe(
-            response => this.servico = response,
-            errorResponse => this.servico = new Servico()
-          )
-        }
-      });
+    if(this.id){
+      this.servicoService.atualizarServico(this.servico).subscribe( response => {
+        this.success = true;
+        this.errors = null;
+      }, errorResponse => {
+        this.errors = ['Erro ao atualizar o serviço']
+      })
+    }
+    else {
+
+      //seta o form com as infos do id passado via params
+      let params = this.activatedRouter.params;
+      params.forEach( value =>{
+       if(value.id){
+         this.id = value.id;
+         this.servicoService
+         .getServicosById(this.id)
+         .subscribe(
+           response => this.servico = response,
+           errorResponse => this.servico = new Servico()
+         )
+       }
+     });
+    }
+
   }
 
   onSubmit(){

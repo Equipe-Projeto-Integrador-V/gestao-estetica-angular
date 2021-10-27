@@ -14,6 +14,10 @@ export class FuncionariosService {
     return this.http.post<Funcionario>('http://localhost:8080/api/funcionarios', funcionario);
   }
 
+  atualizarFuncionario( funcionario : Funcionario ) : Observable<any>{
+    return this.http.put<Funcionario>(`http://localhost:8080/api/funcionarios/${funcionario.id}`, funcionario);
+  }
+
   getFuncionarios() : Observable<Funcionario[]>{
 
     return this.http.get<Funcionario[]>('http://localhost:8080/api/funcionarios');

@@ -12,8 +12,11 @@ export class ClientesListaComponent implements OnInit {
 
   clientes : Cliente[] = [];  //array de clientes, armazenar todos clientes vindos da api
 
+  clienteSelecionado : Cliente;
+
   constructor( private clienteService : ClientesService, private router : Router) {
 
+    this.clienteSelecionado = new Cliente();
 
   }
 
@@ -26,6 +29,12 @@ export class ClientesListaComponent implements OnInit {
   novoCadastro(){
     this.router.navigate( ['/clientes-form'] )
   }
+
+  preparaDelecao( cliente : Cliente){
+
+    this.clienteSelecionado = cliente;
+  }
+
 
 
 }

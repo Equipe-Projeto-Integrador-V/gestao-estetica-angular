@@ -46,6 +46,16 @@ export class FuncionariosFormComponent implements OnInit {
   }
 
   onSubmit(){
+
+    if(this.id){
+      this.funcionarioService.atualizarFuncionario(this.funcionario).subscribe( response => {
+        this.success = true;
+        this.errors = null;
+      }, errorResponse => {
+        this.errors = ['Erro ao atualizar o funcionario']
+      })
+    }
+    else{
     this.funcionarioService
           .salvarCliente(this.funcionario)
           .subscribe( response => {
@@ -59,10 +69,21 @@ export class FuncionariosFormComponent implements OnInit {
             console.log(errorResponse.error.errors);
 
           })
+          }
   }
 
   voltarParaListagem(){
     this.router.navigate( ['/funcionarios-lista']);
+  }
+
+
+  mostrarSenhar(){
+    var x = <HTMLInputElement>document.getElementById("minhaSenha");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
   }
 
 }

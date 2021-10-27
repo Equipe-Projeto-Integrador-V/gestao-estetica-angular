@@ -14,6 +14,10 @@ export class FornecedoresService {
     return this.http.post<Fornecedor>('http://localhost:8080/api/fornecedores', fornecedor);
   }
 
+  atualizarFornecedor( fornecedor : Fornecedor ) : Observable<any>{
+    return this.http.put<Fornecedor>(`http://localhost:8080/api/fornecedores/${fornecedor.id}`, fornecedor);
+  }
+
   getFornecedores() : Observable<Fornecedor[]>{
 
     return this.http.get<Fornecedor[]>('http://localhost:8080/api/fornecedores');

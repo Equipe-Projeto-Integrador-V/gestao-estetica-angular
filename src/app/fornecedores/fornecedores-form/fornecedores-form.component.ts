@@ -47,18 +47,28 @@ export class FornecedoresFormComponent implements OnInit {
 
   onSubmit(){
 
-    this.fornecedoresService
-          .salvarFornecedor(this.fornecedor)
-          .subscribe( response => {
-            this.success = true;
-            console.log(response);
-            this.errors = null;
-            this.fornecedor = response;
-          }, errorResponse => {
-            this.success = false;
-            this.errors = errorResponse.error.errors;
-            console.log(errorResponse.error.errors)
-          })
+    if(this.id){
+      this.fornecedoresService.atualizarFornecedor(this.fornecedor).subscribe( response => {
+        this.success = true;
+        this.errors = null;
+      }, errorResponse => {
+        this.errors = ['Erro ao atualizar o fornecedor']
+      })
+    }
+    else{
+          this.fornecedoresService
+                .salvarFornecedor(this.fornecedor)
+                .subscribe( response => {
+                  this.success = true;
+                  console.log(response);
+                  this.errors = null;
+                  this.fornecedor = response;
+                }, errorResponse => {
+                  this.success = false;
+                  this.errors = errorResponse.error.errors;
+                  console.log(errorResponse.error.errors)
+                })
+    }
   }
 
   voltarParaListagem(){

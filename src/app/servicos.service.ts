@@ -14,6 +14,10 @@ export class ServicosService {
     return this.http.post<Servico>('http://localhost:8080/api/servicos', servico);
   }
 
+  atualizarServico( servico : Servico ) : Observable<any>{
+    return this.http.put<Servico>(`http://localhost:8080/api/servicos/${servico.id}`, servico);
+  }
+
   getServicos() : Observable<Servico[]>{
 
     return this.http.get<Servico[]>('http://localhost:8080/api/servicos');

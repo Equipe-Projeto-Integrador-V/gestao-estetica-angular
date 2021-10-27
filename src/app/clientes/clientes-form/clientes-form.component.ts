@@ -47,19 +47,32 @@ export class ClientesFormComponent implements OnInit {
 
   onSubmit(){
 
-    //subscribe recebe callback, sendo um o success e outro de failure
-    this.clienteService
-          .salvarCliente(this.cliente)
-          .subscribe( response => {
-            this.success = true;
-            console.log(response);
-            this.errors = null;
-            this.cliente = response; //mostra as infos
-          }, errorResponse => {
-            this.success=false;
-            this.errors = errorResponse.error.errors;
-            console.log(errorResponse.error.errors)
-          })
+    if(this.id){
+
+      this.clienteService.atualizarCliente(this.cliente).subscribe( response => {
+        this.success = true;
+        this.errors = null;
+      }, errorResponse => {
+        this.errors = ['Erro ao atualizar o cliente']
+      })
+
+    }else{
+
+      //subscribe recebe callback, sendo um o success e outro de failure
+      this.clienteService
+            .salvarCliente(this.cliente)
+            .subscribe( response => {
+              this.success = true;
+              console.log(response);
+              this.errors = null;
+              this.cliente = response; //mostra as infos
+            }, errorResponse => {
+              this.success=false;
+              this.errors = errorResponse.error.errors;
+              console.log(errorResponse.error.errors)
+            })
+    }
+
   }
 
   voltarParaListagem(){
