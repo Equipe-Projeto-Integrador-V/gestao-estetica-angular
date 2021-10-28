@@ -18,6 +18,10 @@ export class ServicosService {
     return this.http.put<Servico>(`http://localhost:8080/api/servicos/${servico.id}`, servico);
   }
 
+  deletarServicos(servico : Servico) : Observable<any> {
+    return this.http.delete<any>(`http://localhost:8080/api/servicos/${servico.id}`);
+  }
+
   getServicos() : Observable<Servico[]>{
 
     return this.http.get<Servico[]>('http://localhost:8080/api/servicos');

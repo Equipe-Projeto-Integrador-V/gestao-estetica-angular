@@ -12,6 +12,8 @@ export class FuncionariosListaComponent implements OnInit {
 
   funcionarios : Funcionario[] = []; //array de clientes, armazenar todos clientes vindos da api
   funcionarioSelecionado : Funcionario;
+  menssagemSucceso? : string;
+  menssagemErro? : string;
 
   constructor( private funcionarioService : FuncionariosService, private router : Router) {
     this.funcionarioSelecionado = new Funcionario();
@@ -32,5 +34,16 @@ export class FuncionariosListaComponent implements OnInit {
  preparaDelecao( funcionario : Funcionario ){
     this.funcionarioSelecionado = funcionario;
  }
+
+ deletarFuncionario(){
+
+  this.funcionarioService
+          .deletarFuncionario(this.funcionarioSelecionado)
+          .subscribe( response => {
+            this.menssagemSucceso = 'FUNCIONARIO: '+ this.funcionarioSelecionado.nome + ' deletado com sucesso!!!'
+            this.ngOnInit();
+          },
+                      erro => this.menssagemErro = 'Ocorreu um erro ao deletar o funcionario!!!');
+}
 
 }

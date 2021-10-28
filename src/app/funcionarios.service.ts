@@ -18,6 +18,10 @@ export class FuncionariosService {
     return this.http.put<Funcionario>(`http://localhost:8080/api/funcionarios/${funcionario.id}`, funcionario);
   }
 
+  deletarFuncionario(funcionario : Funcionario) : Observable<any> {
+    return this.http.delete<any>(`http://localhost:8080/api/funcionarios/${funcionario.id}`);
+  }
+
   getFuncionarios() : Observable<Funcionario[]>{
 
     return this.http.get<Funcionario[]>('http://localhost:8080/api/funcionarios');

@@ -12,6 +12,8 @@ export class ServicosListaComponent implements OnInit {
 
   servicos : Servico[] = []; //array de clientes, armazenar todos clientes vindos da api
   servicoSelecionado : Servico;
+  menssagemSucceso? : string;
+  menssagemErro? : string;
 
   constructor( private servicoService : ServicosService,
     private router : Router
@@ -34,5 +36,18 @@ export class ServicosListaComponent implements OnInit {
 
     this.servicoSelecionado = servico;
   }
+
+  deletarServico(){
+
+    this.servicoService
+            .deletarServicos(this.servicoSelecionado)
+            .subscribe( response => {
+              this.menssagemSucceso = 'SERVIÇO: '+ this.servicoSelecionado.descricao + ' deletado com sucesso!!!'
+              this.ngOnInit();
+            },
+                        erro => this.menssagemErro = 'Ocorreu um erro ao deletar o serviço!!!');
+  }
+
+
 
 }
