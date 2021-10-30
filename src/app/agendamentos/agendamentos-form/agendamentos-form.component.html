@@ -1,1 +1,78 @@
-<p>agendamentos-form works!</p>
+<h1 class="mt-4">Agendamentos</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Novo</li>
+</ol>
+<div class="container">
+  <form #form="ngForm" (submit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Data: </label>
+          <input type="date" class="form-control" [(ngModel)]="agendamento.data" name="data" id="inputData" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Hora: </label>
+          <input type="time" class="form-control" [(ngModel)]="agendamento.hora" name="hora" id="inputHora" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Cliente: </label>
+          <select class="form-control" [ngModelOptions]="{ standalone: true }" [(ngModel)]="agendamento.idcliente">
+            <option value="">Selecione...</option>
+            <option *ngFor="let c of clientes" [ngValue]="c.id">
+              {{ c.nome }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Funcionario: </label>
+          <select class="form-control" [(ngModel)]="agendamento.idfuncionario" [ngModelOptions]="{ standalone: true }">
+            <option value="">Selecione...</option>
+            <option *ngFor="let f of funcionarios" [ngValue]="f.id">
+              {{ f.nome }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Serviço: </label>
+          <select class="form-control" [(ngModel)]="agendamento.idservico" [ngModelOptions]="{ standalone: true }"
+            title="Selecione...">
+            <option value="">Selecione...</option>
+            <option *ngFor="let s of servicos" [ngValue]="s.id">
+              {{ s.descricao }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+      <div class="form-group">
+        <label> Observação: </label>
+        <textarea class="form-control" [(ngModel)]="agendamento.observacao" name="observacao" rows="5"
+          id="inputObservacao">
+        </textarea>
+      </div>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Salvar</button>
+      </div>
+    </div>
+  </form>
+</div>
