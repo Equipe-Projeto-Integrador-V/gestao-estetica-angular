@@ -22,7 +22,7 @@
       <div class="col-md-12">
         <div class="form-group">
           <label>Cliente: </label>
-          <select class="form-control" [ngModelOptions]="{ standalone: true }" [(ngModel)]="agendamento.idcliente">
+          <select class="form-control" [ngModelOptions]="{ standalone: true }" [(ngModel)]="agendamento.cliente">
             <option value="">Selecione...</option>
             <option *ngFor="let c of clientes" [ngValue]="c.id">
               {{ c.nome }}
@@ -35,7 +35,7 @@
       <div class="col-md-12">
         <div class="form-group">
           <label>Funcionario: </label>
-          <select class="form-control" [(ngModel)]="agendamento.idfuncionario" [ngModelOptions]="{ standalone: true }">
+          <select class="form-control" [(ngModel)]="agendamento.funcionario" [ngModelOptions]="{ standalone: true }">
             <option value="">Selecione...</option>
             <option *ngFor="let f of funcionarios" [ngValue]="f.id">
               {{ f.nome }}
@@ -49,7 +49,7 @@
       <div class="col-md-12">
         <div class="form-group">
           <label>Serviço: </label>
-          <select class="form-control" [(ngModel)]="agendamento.idservico" [ngModelOptions]="{ standalone: true }"
+          <select class="form-control" [(ngModel)]="agendamento.servico" [ngModelOptions]="{ standalone: true }"
             title="Selecione...">
             <option value="">Selecione...</option>
             <option *ngFor="let s of servicos" [ngValue]="s.id">

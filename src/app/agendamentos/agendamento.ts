@@ -5,8 +5,8 @@ export class Agendamento {
   data? : Date;
   hora? : Time;
   observacao? : string;
-  idcliente? : number;
-  idfuncionario? : number;
-  idservico? : number;
+  cliente? : number;
+  funcionario? : number;
+  servico? : number;
 
 }

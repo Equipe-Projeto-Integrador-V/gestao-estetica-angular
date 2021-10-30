@@ -1,3 +1,7 @@
+import { AgendamentosService } from './agendamentos.service';
+import { FornecedoresService } from './fornecedores.service';
+import { ServicosService } from './servicos.service';
+import { FuncionariosService } from 'src/app/funcionarios.service';
 import { ClientesService } from './clientes.service';
 import { ContasPagarModule } from './contas-pagar/contas-pagar.module';
 import { ContasReceberModule } from './contas-receber/contas-receber.module';
@@ -36,7 +40,8 @@ import { HttpClientModule } from '@angular/common/http'
 
   ],
   providers: [
-    ClientesService
+    ClientesService,
+    AgendamentosService
   ],
   bootstrap: [AppComponent]
 })

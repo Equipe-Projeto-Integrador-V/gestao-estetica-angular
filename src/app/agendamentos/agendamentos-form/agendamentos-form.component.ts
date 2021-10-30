@@ -1,3 +1,4 @@
+import { AgendamentosService } from './../../agendamentos.service';
 import { Agendamento } from './../agendamento';
 import { ServicosService } from './../../servicos.service';
 import { FuncionariosService } from 'src/app/funcionarios.service';
@@ -24,7 +25,8 @@ export class AgendamentosFormComponent implements OnInit {
   constructor(
                 private clienteService : ClientesService,
                 private funcionarioService : FuncionariosService,
-                private servicoService : ServicosService) {
+                private servicoService : ServicosService,
+                private servicoAgendamento : AgendamentosService) {
 
                   this.agendamento = new Agendamento();
 
@@ -41,7 +43,12 @@ export class AgendamentosFormComponent implements OnInit {
 
 
   onSubmit(){
-    console.log(this.agendamento);
+    //console.log(this.agendamento);
+
+    this.servicoAgendamento.salvar(this.agendamento)
+                              .subscribe( response => {
+                                      console.log(response);
+                              })
   }
 
 }

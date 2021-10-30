@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Funcionario } from './funcionarios/funcionario';
 import { HttpClient } from '@angular/common/http';
@@ -8,27 +9,29 @@ import { Injectable } from '@angular/core';
 })
 export class FuncionariosService {
 
+  apiURL : string = environment.apiURLbase + '/api/funcionarios'
+
   constructor( private http : HttpClient) { }
 
   salvarCliente( funcionario : Funcionario ) : Observable<Funcionario>{
-    return this.http.post<Funcionario>('http://localhost:8080/api/funcionarios', funcionario);
+    return this.http.post<Funcionario>(`${this.apiURL}`, funcionario);
   }
 
   atualizarFuncionario( funcionario : Funcionario ) : Observable<any>{
-    return this.http.put<Funcionario>(`http://localhost:8080/api/funcionarios/${funcionario.id}`, funcionario);
+    return this.http.put<Funcionario>(`${this.apiURL}/${funcionario.id}`, funcionario);
   }
 
   deletarFuncionario(funcionario : Funcionario) : Observable<any> {
-    return this.http.delete<any>(`http://localhost:8080/api/funcionarios/${funcionario.id}`);
+    return this.http.delete<any>(`${this.apiURL}/${funcionario.id}`);
   }
 
   getFuncionarios() : Observable<Funcionario[]>{
 
-    return this.http.get<Funcionario[]>('http://localhost:8080/api/funcionarios');
+    return this.http.get<Funcionario[]>(this.apiURL);
   }
 
   getFuncionarioById( id: number) : Observable<Funcionario>{
 
-    return this.http.get<any>(`http://localhost:8080/api/funcionarios/${id}`);
+    return this.http.get<any>(`${this.apiURL}/${id}`);
   }
 }
