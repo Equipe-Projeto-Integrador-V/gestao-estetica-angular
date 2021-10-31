@@ -1,6 +1,7 @@
 import { AgendamentosService } from './../../agendamentos.service';
 import { Component, OnInit } from '@angular/core';
 import { AgendamentoBusca } from '../agendamento-busca';
+import { Agendamento } from '../agendamento';
 
 @Component({
   selector: 'app-agendamentos-lista',
@@ -16,11 +17,17 @@ export class AgendamentosListaComponent implements OnInit {
   agendamentoBuscaLista? : AgendamentoBusca[];
   message?: string | null;
 
+  agendamentos? : AgendamentoBusca[];
+
   constructor( private agendamentoService : AgendamentosService) {
     this.meses = [1,2,3,4,5,6,7,8,9,10,11,12];
   }
 
   ngOnInit(): void {
+    this.agendamentoService.getClientes().subscribe( response => {
+      this.agendamentoBuscaLista = response;
+    })
+
   }
 
   consultar(){

@@ -9,7 +9,7 @@
     <hr>
     <p class="mb-0">Após implementar a autenticação, 'Funcionarios' só estará disponivel no navbar de usuários com ROLES 'Admin'.</p>
   </div>
-  <form #funcionarioForm="ngForm" (ngSubmit)="onSubmit()">
+  <form #funcionarioForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off">
     <!--alerta inicio-->
     <div class="row">
       <div class="col-md-12">

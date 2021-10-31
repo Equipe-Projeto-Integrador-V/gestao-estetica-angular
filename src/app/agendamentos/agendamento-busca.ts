@@ -7,8 +7,8 @@ export class AgendamentoBusca{
   data? : Date;
   hora? : Time;
   observacao? : string;
-  cliente? : Cliente;
-  funcionario? : Funcionario;
-  servico? : Servico;
+  cliente! : Cliente;
+  funcionario! : Funcionario;
+  servico! : Servico;
 
 }

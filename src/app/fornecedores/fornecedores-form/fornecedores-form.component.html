@@ -3,7 +3,7 @@
   <li class="breadcrumb-item active">{{ fornecedor.id ? 'Edição' : 'Cadastro'}}</li>
 </ol>
 <div class="container">
-  <form #fornecedorForm="ngForm" (ngSubmit)="onSubmit()">
+  <form #fornecedorForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off">
     <!--alerta inicio-->
     <div class="row">
       <div class="col-md-12">

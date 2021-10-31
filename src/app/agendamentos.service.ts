@@ -28,4 +28,9 @@ export class AgendamentosService {
     ///  /api/agendamentos/?nome=Testando&mes=1
     return this.http.get<any>(url);
   }
+
+  getClientes() : Observable<AgendamentoBusca[]>{
+
+    return this.http.get<AgendamentoBusca[]>(this.apiURL+'/listar');
+  }
 }
