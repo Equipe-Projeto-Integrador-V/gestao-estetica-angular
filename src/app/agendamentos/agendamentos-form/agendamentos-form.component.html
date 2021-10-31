@@ -4,6 +4,19 @@
 </ol>
 <div class="container">
   <form #form="ngForm" (submit)="onSubmit()">
+
+      <!--alerta inicio-->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="alert alert-success" role="alert" *ngIf = "success == true">
+            Agendamento salvo com sucesso!!!
+          </div>
+          <div class="alert alert-danger" role="alert" *ngFor = "let erro of errors">
+            {{ erro }}
+          </div>
+        </div>
+      </div>
+      <!--alerta fim-->
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">

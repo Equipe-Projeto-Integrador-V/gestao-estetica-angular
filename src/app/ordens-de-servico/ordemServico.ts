@@ -1,13 +1,15 @@
+import { Time } from '@angular/common';
 export class OrdemServico {
 
   dataInicio? : Date;
   dataFinal? : Date;
+  horaInicio? : Time;
+  horaFinal? : Time;
   status? : string;
   valor? : number;
-  idAgendamento? : number;
-  idServico? : number;
-  idFuncionarioOS? : number;
-  idFuncionarioEX? : number;
+  agendamento? : number;
+  funcionarioOs? : number;
+  funcionarioExec? : number;
 
 
 }

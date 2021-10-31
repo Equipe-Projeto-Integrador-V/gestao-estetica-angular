@@ -22,6 +22,12 @@ export class AgendamentosFormComponent implements OnInit {
 
   agendamento : Agendamento;
 
+    //requisição foi um sucesso
+    success : boolean = false;
+
+    //array responsavel por receber os erros do controller-advice no backend
+    errors? : string[] | null;
+
   constructor(
                 private clienteService : ClientesService,
                 private funcionarioService : FuncionariosService,
@@ -46,9 +52,17 @@ export class AgendamentosFormComponent implements OnInit {
     //console.log(this.agendamento);
 
     this.servicoAgendamento.salvar(this.agendamento)
-                              .subscribe( response => {
-                                      console.log(response);
-                              })
+    .subscribe( response => {
+      this.success = true;
+      console.log(response);
+      this.errors = null;
+      this.agendamento = new Agendamento(); //apos cadastrar, ele limpa o formulario
+      this.agendamento = response; //mostra as infos
+    }, errorResponse => {
+      this.success=false;
+      this.errors = errorResponse.error.errors;
+      console.log(errorResponse.error.errors)
+    })
   }
 
 }

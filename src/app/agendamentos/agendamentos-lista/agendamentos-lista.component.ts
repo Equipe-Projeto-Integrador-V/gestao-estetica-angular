@@ -1,4 +1,6 @@
+import { AgendamentosService } from './../../agendamentos.service';
 import { Component, OnInit } from '@angular/core';
+import { AgendamentoBusca } from '../agendamento-busca';
 
 @Component({
   selector: 'app-agendamentos-lista',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgendamentosListaComponent implements OnInit {
 
-  constructor() { }
+
+  nome? : string;
+  mes? : number;
+  meses : number[];
+  agendamentoBuscaLista? : AgendamentoBusca[];
+  message?: string | null;
+
+  constructor( private agendamentoService : AgendamentosService) {
+    this.meses = [1,2,3,4,5,6,7,8,9,10,11,12];
+  }
 
   ngOnInit(): void {
+  }
+
+  consultar(){
+    if(typeof this.nome == 'string' && this.mes){
+      this.agendamentoService.buscar(this.nome, this.mes).subscribe( response => {
+        this.agendamentoBuscaLista = response;
+        if(this.agendamentoBuscaLista.length <= 0){ this.message = "Nenhum registro encontrado"} else {this.message= null}
+      });
+    }
   }
 
 }

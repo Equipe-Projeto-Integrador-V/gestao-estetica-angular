@@ -1,3 +1,6 @@
+import { ContasReceberService } from './contas-receber.service';
+import { OrdensDeServicoService } from './ordens-de-servico.service';
+import { ContasPagarService } from './contas-pagar.service';
 import { AgendamentosService } from './agendamentos.service';
 import { FornecedoresService } from './fornecedores.service';
 import { ServicosService } from './servicos.service';
@@ -41,7 +44,10 @@ import { HttpClientModule } from '@angular/common/http'
   ],
   providers: [
     ClientesService,
-    AgendamentosService
+    AgendamentosService,
+    OrdensDeServicoService,
+    ContasPagarService,
+    ContasReceberService
   ],
   bootstrap: [AppComponent]
 })
