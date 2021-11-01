@@ -4,6 +4,7 @@ import { Cliente } from './../clientes/cliente';
 import { Time } from '@angular/common';
 export class AgendamentoBusca{
 
+  id? : number;
   data? : Date;
   hora? : Time;
   observacao? : string;

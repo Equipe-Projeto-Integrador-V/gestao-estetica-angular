@@ -1,1 +1,85 @@
-<p>ordens-de-servico-lista works!</p>
+<h1 class="mt-4">Clientes</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Consulta</li>
+</ol>
+<div class="container">
+      <!--alerta inicio-->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="alert alert-success" role="alert" *ngIf = "menssagemSucceso">
+            {{ menssagemSucceso }}
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf = "menssagemErro">
+            {{ menssagemErro }}
+          </div>
+        </div>
+      </div>
+        <!--alerta fim-->
+  <div class="row">
+    <div class="col-md-2">
+      <button class="btn btn-warning" (click)="novoCadastro()"><i class="fa fa-plus"></i> Novo</button>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-condense table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Data Inicio</th>
+            <th>Data Final</th>
+            <th>Hora Inicio</th>
+            <th>Hora Final</th>
+            <th>Status</th>
+            <th>Valor</th>
+            <th>Agendamento</th>
+            <th>Funcionario OS</th>
+            <th>Funcionario Exec</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let os of ordensDeServico">
+            <td>{{os.id}}</td>
+            <td>{{os.dataInicio}}</td>
+            <td>{{os.dataFinal}}</td>
+            <td>{{os.horaInicio}}</td>
+            <td>{{os.horaFinal}}</td>
+            <td>{{os.status}}</td>
+            <td>{{os.valor}}</td>
+            <td>{{os.agendamento?.data }}</td>
+            <td>{{os.funcionarioOs?.nome}}</td>
+            <td>{{os.funcionarioExec?.nome}}</td>
+            <td>
+              <button class="btn btn-primary" routerLink="/ordens-de-servicos-form/{{os.id}}">
+                <i class="fas fa-edit"></i>
+              </button>
+
+              <button class="btn btn-danger ml-2" (click)="preparaDelecao(os)" data-toggle="modal" data-target="#modalDelecao">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="modalDelecao" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Confirmação <i class="fas fa-exclamation-triangle"></i></h4>
+          </div>
+          <div class="modal-body" *ngIf="ordemServicoSelecionado">
+              Deseja <span class="corVermelha">DELETAR</span> o(a) CLIENTE <strong>{{ ordemServicoSelecionado.id }}</strong>?
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success" (click)="deletarOrdemServico()" data-dismiss="modal">Sim</button>
+            <button class="btn btn-danger" data-dismiss="modal">Não</button>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+

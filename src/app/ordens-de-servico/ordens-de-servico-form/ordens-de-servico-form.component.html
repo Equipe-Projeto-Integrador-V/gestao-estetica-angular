@@ -1,1 +1,123 @@
-<p>ordens-de-servico-form works!</p>
+<h1 class="mt-4">Ordem de Serviço</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">{{ ordemServico.id ? 'Edição' : 'Cadastro'}}</li>
+</ol>
+<div class="container">
+  <form #ordemServicoForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <!--alerta inicio-->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf = "success == true">
+          Ordem de Serviço salvo/atualizado com sucesso!!!
+        </div>
+        <div class="alert alert-danger" role="alert" *ngFor = "let erro of errors">
+          {{ erro }}
+        </div>
+      </div>
+    </div>
+      <!--alerta fim-->
+    <div class="row">
+      <div class="col-md-1" *ngIf="ordemServico.id">
+        <div class="form-group">
+          <label>ID:</label>
+          <input type="text" [ngModel]="ordemServico.id" name="id" class="form-control" disabled="true"  />
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <label>Data de Início: *</label>
+          <input type="date" class="form-control" [(ngModel)]="ordemServico.dataInicio" name="dataInicio"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Data Final: *</label>
+          <input type="date" class="form-control" [(ngModel)]="ordemServico.dataFinal" name="dataFinal" />
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Hora de Início:</label>
+          <input type="time" class="form-control" [(ngModel)]="ordemServico.horaInicio" name="horaInicio"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Hora Final:</label>
+          <input type="time" class="form-control" [(ngModel)]="ordemServico.horaFinal" name="horaFinal" />
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Status:</label>
+          <input type="text" class="form-control" [(ngModel)]="ordemServico.status" name="status"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Valor:</label>
+          <input type="text" class="form-control" [(ngModel)]="ordemServico.valor" name="valor" />
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label>Agendamento:</label>
+          <select class="form-control" [(ngModel)]="ordemServico.agendamento" [ngModelOptions]="{ standalone: true }"
+            title="Selecione...">
+            <option value="">Selecione...</option>
+            <option *ngFor="let a of agendamentos" [ngValue]="a.id">
+              {{ a.data }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label>Funcionario Os:</label>
+          <select class="form-control" [(ngModel)]="ordemServico.funcionarioOs" [ngModelOptions]="{ standalone: true }"
+            title="Selecione...">
+            <option value="">Selecione...</option>
+            <option *ngFor="let f of funcionarios" [ngValue]="f.id">
+              {{ f.nome }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label>Funcionario Exec:</label>
+          <select class="form-control" [(ngModel)]="ordemServico.funcionarioExec" [ngModelOptions]="{ standalone: true }"
+            title="Selecione...">
+            <option value="">Selecione...</option>
+            <option *ngFor="let f of funcionarios" [ngValue]="f.id">
+              {{ f.nome }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-success" *ngIf="!ordemServico.id"> <i class="fa fa-save"></i> Salvar</button>
+        <button type="submit" class="btn btn-primary" *ngIf="ordemServico.id"> <i class="fa fa-sync-alt"></i> Atualizar</button>
+        <button type="button" class="btn btn-danger ml-2" (click)="voltarParaListagem()"> <i class="fa fa-arrow-alt-circle-left"></i> Voltar</button>
+      </div>
+    </div>
+  </form>
+</div>
