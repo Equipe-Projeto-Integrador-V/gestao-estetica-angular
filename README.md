@@ -12,3 +12,4 @@
 
 Baixar o projeto, navegar até a pasta e rodar o seguinte comando `npm install`, concluído basta subir o projeto com comando `ng serve` e navegar `http://localhost:4200/`.
 
+teste
