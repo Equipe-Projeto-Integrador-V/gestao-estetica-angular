@@ -1,20 +1,20 @@
-<h1 class="mt-4">Serviços</h1>
+<h1 class="mt-4 col-md-6">Serviços</h1>
 <ol class="breadcrumb mb-4">
-  <li class="breadcrumb-item active">Consulta</li>
+  <li class="breadcrumb-item active col-md-6">Consulta</li>
 </ol>
 <div class="container">
-        <!--alerta inicio-->
-        <div class="row">
-          <div class="col-md-12">
-            <div class="alert alert-success" role="alert" *ngIf = "menssagemSucceso">
-              {{ menssagemSucceso }}
-            </div>
-            <div class="alert alert-danger" role="alert" *ngIf = "menssagemErro">
-              {{ menssagemErro }}
-            </div>
-          </div>
-        </div>
-          <!--alerta fim-->
+  <!--alerta inicio-->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-success" role="alert" *ngIf="menssagemSucceso">
+        {{ menssagemSucceso }}
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="menssagemErro">
+        {{ menssagemErro }}
+      </div>
+    </div>
+  </div>
+  <!--alerta fim-->
   <div class="row">
     <div class="col-md-2">
       <button class="btn btn-warning" (click)="novoCadastro()"><i class="fa fa-plus"></i> Novo</button>
@@ -44,7 +44,8 @@
                 <i class="fas fa-edit"></i>
               </button>
 
-              <button class="btn btn-danger ml-2" (click)="preparaDelecao(s)" data-toggle="modal" data-target="#modalDelecao">
+              <button class="btn btn-danger ml-2" (click)="preparaDelecao(s)" data-toggle="modal"
+                data-target="#modalDelecao">
                 <i class="fas fa-trash"></i>
               </button>
             </td>
@@ -60,7 +61,8 @@
           <h4>Confirmação <i class="fas fa-exclamation-triangle"></i></h4>
         </div>
         <div class="modal-body" *ngIf="servicoSelecionado">
-            Deseja <span class="corVermelha">DELETAR</span> o(a) SERVIÇO <strong>{{ servicoSelecionado.descricao }}</strong>?
+          Deseja <span class="corVermelha">DELETAR</span> o(a) SERVIÇO <strong>{{ servicoSelecionado.descricao
+            }}</strong>?
         </div>
         <div class="modal-footer">
           <button class="btn btn-success" (click)="deletarServico()" data-dismiss="modal">Sim</button>
@@ -68,6 +70,5 @@
         </div>
       </div>
     </div>
+  </div>
 </div>
-</div>
-

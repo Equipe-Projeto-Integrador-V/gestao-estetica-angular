@@ -1,20 +1,21 @@
-<h1 class="mt-4">Clientes</h1>
+<h1 class="mt-4 col-md-6">Ordem de Serviço</h1>
+>>>>>>> Stashed changes
 <ol class="breadcrumb mb-4">
-  <li class="breadcrumb-item active">Consulta</li>
+  <li class="breadcrumb-item active col-md-6">Consulta</li>
 </ol>
 <div class="container">
-      <!--alerta inicio-->
-      <div class="row">
-        <div class="col-md-12">
-          <div class="alert alert-success" role="alert" *ngIf = "menssagemSucceso">
-            {{ menssagemSucceso }}
-          </div>
-          <div class="alert alert-danger" role="alert" *ngIf = "menssagemErro">
-            {{ menssagemErro }}
-          </div>
-        </div>
+  <!--alerta inicio-->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-success" role="alert" *ngIf="menssagemSucceso">
+        {{ menssagemSucceso }}
       </div>
-        <!--alerta fim-->
+      <div class="alert alert-danger" role="alert" *ngIf="menssagemErro">
+        {{ menssagemErro }}
+      </div>
+    </div>
+  </div>
+  <!--alerta fim-->
   <div class="row">
     <div class="col-md-2">
       <button class="btn btn-warning" (click)="novoCadastro()"><i class="fa fa-plus"></i> Novo</button>
@@ -56,7 +57,8 @@
                 <i class="fas fa-edit"></i>
               </button>
 
-              <button class="btn btn-danger ml-2" (click)="preparaDelecao(os)" data-toggle="modal" data-target="#modalDelecao">
+              <button class="btn btn-danger ml-2" (click)="preparaDelecao(os)" data-toggle="modal"
+                data-target="#modalDelecao">
                 <i class="fas fa-trash"></i>
               </button>
             </td>
@@ -66,20 +68,20 @@
     </div>
   </div>
   <div id="modalDelecao" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4>Confirmação <i class="fas fa-exclamation-triangle"></i></h4>
-          </div>
-          <div class="modal-body" *ngIf="ordemServicoSelecionado">
-              Deseja <span class="corVermelha">DELETAR</span> o(a) CLIENTE <strong>{{ ordemServicoSelecionado.id }}</strong>?
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-success" (click)="deletarOrdemServico()" data-dismiss="modal">Sim</button>
-            <button class="btn btn-danger" data-dismiss="modal">Não</button>
-          </div>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Confirmação <i class="fas fa-exclamation-triangle"></i></h4>
+        </div>
+        <div class="modal-body" *ngIf="ordemServicoSelecionado">
+          Deseja <span class="corVermelha">DELETAR</span> o(a) CLIENTE <strong>{{ ordemServicoSelecionado.id
+            }}</strong>?
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-success" (click)="deletarOrdemServico()" data-dismiss="modal">Sim</button>
+          <button class="btn btn-danger" data-dismiss="modal">Não</button>
         </div>
       </div>
+    </div>
   </div>
 </div>
-

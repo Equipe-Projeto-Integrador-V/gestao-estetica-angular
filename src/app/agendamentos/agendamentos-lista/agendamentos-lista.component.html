@@ -1,6 +1,6 @@
-<h1 class="mt-4">Agendamentos</h1>
+<h1 class="mt-4 col-md-6">Agendamentos</h1>
 <ol class="breadcrumb mb-4">
-  <li class="breadcrumb-bitem active">Consulta</li>
+  <li class="breadcrumb-bitem active col-md-6">Consulta</li>
 </ol>
 <div class="container">
   <form #consultaForm="ngForm" (submit)="consultar()">
@@ -18,7 +18,7 @@
         </select>
       </div>
     </div>
-    <br/>
+    <br />
     <div class="row">
       <div class="col-md-5">
         <button type="submit" class="btn btn-primary">
@@ -29,14 +29,15 @@
           <i class="fa fa-plus"></i>Novo
         </button>
 
-        <button type="button" class="btn btn-success ml-2" (click)="ngOnInit()"><i class="fa fa-align-justify"></i> Listar todos</button>
+        <button type="button" class="btn btn-success ml-2" (click)="ngOnInit()"><i class="fa fa-align-justify"></i>
+          Listar todos</button>
       </div>
     </div>
   </form>
 
-  <br/>
+  <br />
   <div class="alert alert-warning" role="alert" *ngIf="message">
-      {{ message }}
+    {{ message }}
   </div>
   <div class="row">
     <div class="col-md-12">
