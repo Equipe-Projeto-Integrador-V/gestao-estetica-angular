@@ -15,4 +15,8 @@ export class ContasReceberService {
   getContasReceber(): Observable<ContasReceber[]> {
     return this.http.get<ContasReceber[]>(this.apiURL);
   }
+
+  excluirContaReceber(conta: ContasReceber): Observable<ContasReceber> {
+    return this.http.delete<any>(`${this.apiURL}/${conta.id}`);
+  }
 }
