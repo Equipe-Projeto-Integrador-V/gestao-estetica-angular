@@ -20,31 +20,32 @@
       <button class="btn btn-warning" (click)="novoCadastro()"><i class="fa fa-plus"></i> Novo</button>
     </div>
   </div>
-  <!-- <br />
+  <br />
   <div class="row">
     <div class="col-md-12">
       <table class="table table-condense table-hover">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Nome</th>
-            <th>CPF</th>
-            <th>Telefone</th>
-            <th>Email</th>
-            <th>UF</th>
-            <th></th>
+            <th>Dt. Emissão</th>
+            <th>Dt. Vencimento</th>
+            <th>Valor</th>
+            <th>Valor recebido</th>
+            <th>Dt. Recebimento</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let c of clientes">
+          <tr *ngFor="let c of contasReceber">
             <td>{{c.id}}</td>
-            <td>{{c.nome}}</td>
-            <td>{{c.cpf}}</td>
-            <td>{{c.telefone}}</td>
-            <td>{{c.email}}</td>
-            <td>{{c.uf}}</td>
+            <td>{{c.emissao}}</td>
+            <td>{{c.vencimento}}</td>
+            <td>{{c.valor}}</td>
+            <td>{{c.valorRecebido}}</td>
+            <td>{{c.recebimento}}</td>
+            <td>{{c.status}}</td>
             <td>
-              <button class="btn btn-primary" routerLink="/clientes-form/{{c.id}}">
+              <button class="btn btn-primary" routerLink="/contas-receber-form/{{c.id}}">
                 <i class="fas fa-edit"></i>
               </button>
 
@@ -63,14 +64,14 @@
           <div class="modal-header">
             <h4>Confirmação <i class="fas fa-exclamation-triangle"></i></h4>
           </div>
-          <div class="modal-body" *ngIf="clienteSelecionado">
-              Deseja <span class="corVermelha">DELETAR</span> o(a) CLIENTE <strong>{{ clienteSelecionado.nome }}</strong>?
+          <div class="modal-body" *ngIf="contaReceberSelecionada">
+              Deseja <span class="corVermelha">DELETAR</span> o(a) CLIENTE <strong>{{ contaReceberSelecionada.id }}</strong>?
           </div>
           <div class="modal-footer">
-            <button class="btn btn-success" (click)="deletarCliente()" data-dismiss="modal">Sim</button>
+            <button class="btn btn-success" (click)="deletarContaReceber()" data-dismiss="modal">Sim</button>
             <button class="btn btn-danger" data-dismiss="modal">Não</button>
           </div>
         </div>
       </div>
-  </div> -->
+  </div>
 </div>
