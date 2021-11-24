@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContasReceberListaComponent implements OnInit {
 
+  menssagemErro? : string;
+  menssagemSucceso? : string;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  novoCadastro() {
+    
+  }
 }
