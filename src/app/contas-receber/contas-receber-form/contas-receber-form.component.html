@@ -1,7 +1,7 @@
 <h1 class="mt-4">Contas a receber</h1>
 <ol class="breadcrumb mb-4">
   <li class="breadcrumb-item active">
-    {{ contaReceber.id ? "Edição" : "Cadastro" }}
+    {{ contaAReceber.id ? "Edição" : "Cadastro" }}
   </li>
 </ol>
 <div class="container">
@@ -22,99 +22,113 @@
       </div>
     </div>
     <!--alerta fim-->
+
     <div class="row">
-      <div class="col-md-1" *ngIf="contaReceber.id">
+      <div class="col-md-12" *ngIf="contaAReceber.id">
         <div class="form-group">
-          <label>ID:</label>
-          <input
-            type="text"
-            [ngModel]="contaReceber.id"
+          <label for="id">ID:</label><br />
+          <p-inputNumber
+            [disabled]="true"
             name="id"
-            class="form-control"
-            disabled="true"
-          />
-        </div>
-      </div>
-      <div class="col-md-5">
-        <div class="form-group">
-          <label>Emissão: *</label>
-          <input
-            type="date"
-            class="form-control"
-            [(ngModel)]="contaReceber.emissao"
-            name="emissao"
-          />
-          <!-- <p-calendar showIcon=true class="form-control" name="emissao" [(ngModel)]="contaReceber.emissao" dateFormat="dd.mm.yy"></p-calendar> -->
+            [ngModel]="contaAReceber.id"
+          ></p-inputNumber>
         </div>
       </div>
     </div>
 
     <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Emissão: *</label>
+          <p-calendar
+            [showIcon]="true"
+            name="emissao"
+            [(ngModel)]="contaAReceber.emissao"
+            dateFormat="dd/mm/yy"
+            dataType="date"
+          ></p-calendar>
+        </div>
+      </div>
+
       <div class="col-md-4">
         <div class="form-group">
           <label>Vencimento: *</label>
-          <input
-            type="date"
-            class="form-control"
-            [(ngModel)]="contaReceber.vencimento"
+          <p-calendar
+            [showIcon]="true"
             name="vencimento"
-          />
+            [(ngModel)]="contaAReceber.vencimento"
+            dateFormat="dd/mm/yy"
+            dataType="date"
+          ></p-calendar>
         </div>
       </div>
-      <div class="col-md-2">
-        <div class="form-group">
-          <label>Valor:</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="contaReceber.valor"
-            name="valor"
-          />
-        </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-4">
-        <div class="form-group">
-          <label>Valor recebido:</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="contaReceber.valorRecebido"
-            name="valorRecebido"
-          />
-        </div>
-      </div>
       <div class="col-md-4">
         <div class="form-group">
           <label>Recebimento:</label>
-          <input
-            type="date"
-            class="form-control"
-            [(ngModel)]="contaReceber.recebimento"
+          <p-calendar
+            [showIcon]="true"
             name="recebimento"
-          />
+            [(ngModel)]="contaAReceber.recebimento"
+            dateFormat="dd/mm/yy"
+            dataType="date"
+          ></p-calendar>
         </div>
       </div>
+
+    </div>
+
+    <div class="row">
+      
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="valor">Valor: *</label>
+          <p-inputNumber
+            id="valor"
+            name="valor"
+            [(ngModel)]="contaAReceber.valor"
+            mode="decimal"
+            locale="pt-BR"
+            [minFractionDigits]="2"
+            [maxFractionDigits]="2"
+          ></p-inputNumber>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Valor recebido:</label>
+          <p-inputNumber
+            id="valorRecebido"
+            name="valorRecebido"
+            [(ngModel)]="contaAReceber.valorRecebido"
+            mode="decimal"
+            locale="pt-BR"
+            [minFractionDigits]="2"
+            [maxFractionDigits]="2"
+          ></p-inputNumber>
+        </div>
+      </div>
+
       <div class="col-md-4">
         <div class="form-group">
           <label>Status:</label>
           <input
             type="text"
             class="form-control"
-            [(ngModel)]="contaReceber.status"
+            [(ngModel)]="contaAReceber.status"
             name="status"
           />
         </div>
       </div>
     </div>
+
     <div class="row">
-      <div class="col-md-3">
-        <button type="submit" class="btn btn-success" *ngIf="!contaReceber.id">
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-success" *ngIf="!contaAReceber.id">
           <i class="fa fa-save"></i> Salvar
         </button>
-        <button type="submit" class="btn btn-primary" *ngIf="contaReceber.id">
+        <button type="submit" class="btn btn-primary" *ngIf="contaAReceber.id">
           <i class="fa fa-sync-alt"></i> Atualizar
         </button>
         <button

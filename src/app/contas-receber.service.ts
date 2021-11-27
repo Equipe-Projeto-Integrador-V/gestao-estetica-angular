@@ -29,6 +29,23 @@ export class ContasReceberService {
   }
 
   atualizarContaAReceber(conta: ContaAReceber): Observable<ContaAReceber> {
-    return this.http.put<ContaAReceber>(`${this.apiURL}/${conta.id}`, conta);
+    return this.http.put<ContaAReceber>(
+      `${this.apiURL}/${conta.id}`,
+      this.prepararModel(conta)
+    );
+  }
+
+  prepararModel(conta: ContaAReceber): {} {
+    return {
+      id: conta.id,
+      emissao: conta.emissao?.toLocaleDateString('en-US'),
+      vencimento: conta.vencimento?.toLocaleDateString('en-US'),
+      recebimento: conta.recebimento?.toLocaleDateString('en-US'),
+      valor: conta.valor,
+      valorRecebido: conta.valorRecebido,
+      cliente: conta.cliente,
+      ordemServico: conta.ordemServico,
+      status: conta.status,
+    };
   }
 }

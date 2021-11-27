@@ -9,7 +9,7 @@ import { ContaAReceber } from '../contas-receber.model';
   styleUrls: ['./contas-receber-form.component.css'],
 })
 export class ContasReceberFormComponent implements OnInit {
-  contaReceber: ContaAReceber;
+  contaAReceber: ContaAReceber;
   errors?: string[] | null;
   id?: number; //id passado via parametro
   success: boolean = false;
@@ -19,7 +19,7 @@ export class ContasReceberFormComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
-    this.contaReceber = new ContaAReceber();
+    this.contaAReceber = new ContaAReceber();
   }
 
   ngOnInit(): void {
@@ -28,13 +28,27 @@ export class ContasReceberFormComponent implements OnInit {
     params.forEach((value) => {
       if (value.id) {
         this.id = value.id;
-        this.contaReceber.id = this.id;
-        this.contasReceberService.consultarContaPeloId(this.contaReceber).subscribe(
-          (response) => (this.contaReceber = response),
-          (errorResponse) => (this.contaReceber = new ContaAReceber())
-        );
+        this.contaAReceber.id = this.id;
+        this.contasReceberService
+          .consultarContaPeloId(this.contaAReceber)
+          .subscribe(
+            (response) => this.carregarModel(response),
+            (errorResponse) => (this.contaAReceber = new ContaAReceber())
+          );
       }
     });
+  }
+
+  carregarModel(response: any) {
+    this.contaAReceber.id = response.id;
+    this.contaAReceber.emissao = new Date(response.emissao);
+    this.contaAReceber.vencimento = new Date(response.vencimento);
+    this.contaAReceber.recebimento = new Date(response.recebimento);
+    this.contaAReceber.valor = response.valor;
+    this.contaAReceber.valorRecebido = response.valorRecebido;
+    this.contaAReceber.status = response.status;
+    this.contaAReceber.cliente = response.cliente;
+    this.contaAReceber.ordemServico = response.ordemServico;
   }
 
   voltarParaListagem() {
@@ -44,7 +58,7 @@ export class ContasReceberFormComponent implements OnInit {
   onSubmit() {
     if (this.id) {
       this.contasReceberService
-        .atualizarContaAReceber(this.contaReceber)
+        .atualizarContaAReceber(this.contaAReceber)
         .subscribe(
           (response) => {
             this.success = true;
@@ -56,13 +70,13 @@ export class ContasReceberFormComponent implements OnInit {
         );
     } else {
       this.contasReceberService
-        .cadastrarNovaContaAReceber(this.contaReceber)
+        .cadastrarNovaContaAReceber(this.contaAReceber)
         .subscribe(
           (response) => {
             this.success = true;
             console.log(response);
             this.errors = null;
-            this.contaReceber = response; //mostra as infos
+            this.contaAReceber = response; //mostra as infos
           },
           (errorResponse) => {
             this.success = false;

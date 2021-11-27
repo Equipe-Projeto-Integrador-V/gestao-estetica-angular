@@ -1,4 +1,7 @@
-export class ContasReceber {
+import { Cliente } from "../clientes/cliente";
+import { OrdemServico } from "../ordens-de-servico/ordemServico";
+
+export class ContaAReceber {
   id?: number;
   emissao?: Date;
   vencimento?: Date;
@@ -6,4 +9,6 @@ export class ContasReceber {
   valorRecebido?: number;
   recebimento?: Date;
   status?: string;
+  ordemServico?: OrdemServico;
+  cliente?: Cliente;
 }
