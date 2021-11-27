@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ContasReceber } from '../contas-receber.model';
+import { ContaAReceber } from '../contas-receber.model';
 import { ContasReceberService } from '../../contas-receber.service';
 
 @Component({
@@ -11,19 +11,19 @@ import { ContasReceberService } from '../../contas-receber.service';
 export class ContasReceberListaComponent implements OnInit {
   menssagemErro?: string;
   menssagemSucceso?: string;
-  contasReceber?: ContasReceber[];
-  contaReceberSelecionada: ContasReceber;
+  contasReceber?: ContaAReceber[];
+  contaReceberSelecionada: ContaAReceber;
 
   constructor(
     private contasPagarService: ContasReceberService,
     private router: Router
   ) {
-    this.contaReceberSelecionada = new ContasReceber();
+    this.contaReceberSelecionada = new ContaAReceber();
   }
 
   ngOnInit(): void {
     this.contasPagarService
-      .getContasReceber()
+      .getContasAReceber()
       .subscribe((response) => (this.contasReceber = response));
   }
 
@@ -31,13 +31,13 @@ export class ContasReceberListaComponent implements OnInit {
     this.router.navigate(['/contas-receber-form']);
   }
 
-  preparaDelecao(c: ContasReceber) {
+  preparaDelecao(c: ContaAReceber) {
     this.contaReceberSelecionada = c;
   }
 
   deletarContaReceber() {
     this.contasPagarService
-      .excluirContaReceber(this.contaReceberSelecionada)
+      .excluirContaAReceber(this.contaReceberSelecionada)
       .subscribe(
         (response) => {
           this.menssagemSucceso =

@@ -1,1 +1,130 @@
-<p>contas-receber-form works!</p>
+<h1 class="mt-4">Contas a receber</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">
+    {{ contaReceber.id ? "Edição" : "Cadastro" }}
+  </li>
+</ol>
+<div class="container">
+  <form #clienteForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <!--alerta inicio-->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf="success == true">
+          Conta a receber salva/atualizada com sucesso!!!
+        </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngFor="let erro of errors"
+        >
+          {{ erro }}
+        </div>
+      </div>
+    </div>
+    <!--alerta fim-->
+    <div class="row">
+      <div class="col-md-1" *ngIf="contaReceber.id">
+        <div class="form-group">
+          <label>ID:</label>
+          <input
+            type="text"
+            [ngModel]="contaReceber.id"
+            name="id"
+            class="form-control"
+            disabled="true"
+          />
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <label>Emissão: *</label>
+          <input
+            type="date"
+            class="form-control"
+            [(ngModel)]="contaReceber.emissao"
+            name="emissao"
+          />
+          <!-- <p-calendar showIcon=true class="form-control" name="emissao" [(ngModel)]="contaReceber.emissao" dateFormat="dd.mm.yy"></p-calendar> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Vencimento: *</label>
+          <input
+            type="date"
+            class="form-control"
+            [(ngModel)]="contaReceber.vencimento"
+            name="vencimento"
+          />
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Valor:</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="contaReceber.valor"
+            name="valor"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Valor recebido:</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="contaReceber.valorRecebido"
+            name="valorRecebido"
+          />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Recebimento:</label>
+          <input
+            type="date"
+            class="form-control"
+            [(ngModel)]="contaReceber.recebimento"
+            name="recebimento"
+          />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Status:</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="contaReceber.status"
+            name="status"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-success" *ngIf="!contaReceber.id">
+          <i class="fa fa-save"></i> Salvar
+        </button>
+        <button type="submit" class="btn btn-primary" *ngIf="contaReceber.id">
+          <i class="fa fa-sync-alt"></i> Atualizar
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger ml-2"
+          (click)="voltarParaListagem()"
+        >
+          <i class="fa fa-arrow-alt-circle-left"></i> Voltar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

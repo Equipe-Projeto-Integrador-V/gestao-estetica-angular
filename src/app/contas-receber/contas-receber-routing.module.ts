@@ -4,12 +4,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path : 'contas-receber-form', component: ContasReceberFormComponent },
-  {path : 'contas-receber-lista', component: ContasReceberListaComponent }
+  { path: 'contas-receber-form', component: ContasReceberFormComponent },
+  { path: 'contas-receber-form/:id', component: ContasReceberFormComponent },
+  { path: 'contas-receber-lista', component: ContasReceberListaComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ContasReceberRoutingModule { }
+export class ContasReceberRoutingModule {}
