@@ -2,9 +2,6 @@ import { ContasReceberService } from './contas-receber.service';
 import { OrdensDeServicoService } from './ordens-de-servico.service';
 import { ContasPagarService } from './contas-pagar.service';
 import { AgendamentosService } from './agendamentos.service';
-import { FornecedoresService } from './fornecedores.service';
-import { ServicosService } from './servicos.service';
-import { FuncionariosService } from 'src/app/funcionarios.service';
 import { ClientesService } from './clientes.service';
 import { ContasPagarModule } from './contas-pagar/contas-pagar.module';
 import { ContasReceberModule } from './contas-receber/contas-receber.module';
@@ -20,15 +17,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ClientesModule } from './clientes/clientes.module';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent
-  ],
+  declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     TemplateModule,
@@ -40,15 +36,14 @@ import { HttpClientModule } from '@angular/common/http'
     OrdensDeServicoModule,
     ContasReceberModule,
     ContasPagarModule,
-
   ],
   providers: [
     ClientesService,
     AgendamentosService,
     OrdensDeServicoService,
     ContasPagarService,
-    ContasReceberService
+    ContasReceberService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
