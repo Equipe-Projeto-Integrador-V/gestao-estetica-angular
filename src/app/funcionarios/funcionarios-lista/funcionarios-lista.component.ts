@@ -28,7 +28,7 @@ export class FuncionariosListaComponent implements OnInit {
 
 
  novoCadastro(){
-   this.router.navigate( ['/funcionarios-form'] )
+   this.router.navigate( ['/funcionarios/form'] )
  }
 
  preparaDelecao( funcionario : Funcionario ){
