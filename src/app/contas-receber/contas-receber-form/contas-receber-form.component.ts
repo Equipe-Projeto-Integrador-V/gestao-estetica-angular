@@ -52,7 +52,7 @@ export class ContasReceberFormComponent implements OnInit {
   }
 
   voltarParaListagem() {
-    this.router.navigate(['/contas-receber-lista']);
+    this.router.navigate(['/contas-receber/lista']);
   }
 
   onSubmit() {

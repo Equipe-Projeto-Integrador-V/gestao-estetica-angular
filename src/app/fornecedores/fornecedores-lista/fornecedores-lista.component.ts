@@ -29,7 +29,7 @@ export class FornecedoresListaComponent implements OnInit {
   }
 
   novoCadastro(){
-    this.router.navigate( ['/fornecedores-form'] )
+    this.router.navigate( ['/fornecedores/form'] )
   }
 
   preparaDelecao( fornecedor : Fornecedor){
