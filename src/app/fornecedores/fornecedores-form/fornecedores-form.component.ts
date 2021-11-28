@@ -72,7 +72,7 @@ export class FornecedoresFormComponent implements OnInit {
   }
 
   voltarParaListagem(){
-    this.router.navigate( ['/fornecedores/lista']);
+    this.router.navigate( ['/fornecedores-lista']);
   }
 
 }

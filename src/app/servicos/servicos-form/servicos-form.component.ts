@@ -76,7 +76,7 @@ export class ServicosFormComponent implements OnInit {
   }
 
   voltarParaListagem(){
-    this.router.navigate( ['/servicos/lista']);
+    this.router.navigate( ['/servicos-lista']);
   }
 
 }

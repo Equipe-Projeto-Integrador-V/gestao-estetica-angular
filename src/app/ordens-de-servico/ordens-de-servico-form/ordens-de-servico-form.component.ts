@@ -88,7 +88,7 @@ export class OrdensDeServicoFormComponent implements OnInit {
   }
 
   voltarParaListagem(){
-    this.router.navigate( ['/ordens-de-servicos/lista']);
+    this.router.navigate( ['/ordens-de-servicos-lista']);
   }
 
 }

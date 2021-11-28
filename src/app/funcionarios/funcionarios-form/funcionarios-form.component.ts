@@ -73,7 +73,7 @@ export class FuncionariosFormComponent implements OnInit {
   }
 
   voltarParaListagem(){
-    this.router.navigate( ['/funcionarios/lista']);
+    this.router.navigate( ['/funcionarios-lista']);
   }
 
 

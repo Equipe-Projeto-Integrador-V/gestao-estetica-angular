@@ -27,7 +27,7 @@ export class OrdensDeServicoListaComponent implements OnInit {
 
   novoCadastro(){
 
-    this.router.navigate( ['/ordens-de-servicos/form'] )
+    this.router.navigate( ['/ordens-de-servicos-form'] )
   }
 
   preparaDelecao(ordemServico : OrdemServicoLista){
