@@ -28,7 +28,7 @@ export class ContasReceberListaComponent implements OnInit {
   }
 
   novoCadastro() {
-    this.router.navigate(['/contas-receber-form']);
+    this.router.navigate(['/contas-receber/form']);
   }
 
   preparaDelecao(c: ContaAReceber) {
