@@ -52,8 +52,8 @@ export class ContasReceberService {
       recebimento: conta.recebimento?.toLocaleDateString('en-US', options),
       valor: conta.valor,
       valorRecebido: conta.valorRecebido,
-      cliente: conta.cliente,
-      ordemServico: conta.ordemServico,
+      cliente: conta.cliente?.id,
+      ordemServico: conta.ordemServico?.id,
       status: conta.status,
     };
   }
