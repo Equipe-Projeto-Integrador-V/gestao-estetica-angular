@@ -25,7 +25,10 @@ export class ContasReceberService {
   }
 
   cadastrarNovaContaAReceber(conta: ContaAReceber): Observable<ContaAReceber> {
-    return this.http.post<ContaAReceber>(`${this.apiURL}`, conta);
+    return this.http.post<ContaAReceber>(
+      `${this.apiURL}`,
+      this.prepararModel(conta)
+    );
   }
 
   atualizarContaAReceber(conta: ContaAReceber): Observable<ContaAReceber> {
@@ -36,11 +39,17 @@ export class ContasReceberService {
   }
 
   prepararModel(conta: ContaAReceber): {} {
+    const options: Intl.DateTimeFormatOptions = {
+      month: '2-digit',
+      day: '2-digit',
+      year: 'numeric',
+    };
+
     return {
       id: conta.id,
-      emissao: conta.emissao?.toLocaleDateString('en-US'),
-      vencimento: conta.vencimento?.toLocaleDateString('en-US'),
-      recebimento: conta.recebimento?.toLocaleDateString('en-US'),
+      emissao: conta.emissao?.toLocaleDateString('en-US', options),
+      vencimento: conta.vencimento?.toLocaleDateString('en-US', options),
+      recebimento: conta.recebimento?.toLocaleDateString('en-US', options),
       valor: conta.valor,
       valorRecebido: conta.valorRecebido,
       cliente: conta.cliente,
