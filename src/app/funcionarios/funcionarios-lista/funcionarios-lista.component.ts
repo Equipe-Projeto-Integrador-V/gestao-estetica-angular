@@ -1,3 +1,4 @@
+import { AuthService } from './../../auth.service';
 import { Router } from '@angular/router';
 import { Funcionario } from './../funcionario';
 import { Component, OnInit } from '@angular/core';
@@ -14,9 +15,12 @@ export class FuncionariosListaComponent implements OnInit {
   funcionarioSelecionado : Funcionario;
   menssagemSucceso? : string;
   menssagemErro? : string;
+  errors? : string[];
 
-  constructor( private funcionarioService : FuncionariosService, private router : Router) {
+
+  constructor( private funcionarioService : FuncionariosService, private router : Router, private auth : AuthService) {
     this.funcionarioSelecionado = new Funcionario();
+
   }
 
   ngOnInit(): void {
@@ -24,6 +28,9 @@ export class FuncionariosListaComponent implements OnInit {
     this.funcionarioService
     .getFuncionarios()
     .subscribe( response => this.funcionarios = response );
+
+    console.log(this.errors)
+    console.log(this.auth.isAuthenticatedAdmin());
   }
 
 

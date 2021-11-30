@@ -1,3 +1,5 @@
+import { TokenInterceptor } from './token.interceptor';
+import { AuthService } from './auth.service';
 import { FormsModule } from '@angular/forms';
 import { ContasReceberService } from './contas-receber.service';
 import { OrdensDeServicoService } from './ordens-de-servico.service';
@@ -18,7 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ClientesModule } from './clientes/clientes.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -47,6 +49,12 @@ import { LayoutComponent } from './layout/layout.component';
     OrdensDeServicoService,
     ContasPagarService,
     ContasReceberService,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })

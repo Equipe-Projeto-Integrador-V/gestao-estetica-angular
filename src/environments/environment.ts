@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  apiURLbase: 'http://localhost:8080'
+  apiURLbase: 'http://localhost:8080',
+  clientId: 'gestao-estetica-angular',
+  clientSecret: '@faculdadeSenac123',
+  obterTokenUrl: '/oauth/token'
 };
 
 /*

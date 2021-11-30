@@ -77,7 +77,19 @@
       <div class="col-md-1">
         <div class="form-group">
           <label>Senha:</label>
-          <input type="password" class="form-control" [(ngModel)]="funcionario.senha" name="senha" id="minhaSenha"/>
+          <input type="password" class="form-control" [(ngModel)]="funcionario.senha" name="minhaSenha" id="minhaSenha"/>
+
+        </div>
+      </div>
+      <div class="col-md-1">
+        <div class="form-group">
+          <label>Permissão:</label>
+          <select [(ngModel)]="funcionario.permissao" class="form-control" name="tipoAutorizacao">
+            <option value="">Selecione...</option>
+            <option *ngFor="let tipoAutorizacao of autorizacoes" [value]="tipoAutorizacao">{{tipoAutorizacao}}</option>
+          </select>
+
+
 
         </div>
       </div>
