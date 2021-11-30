@@ -22,17 +22,19 @@
   </div>
   <br />
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-20">
       <table class="table table-condense table-hover">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Dt. Emissão</th>
-            <th>Dt. Vencimento</th>
+            <th>Emissão</th>
+            <th>Vencimento</th>
             <th>Valor</th>
             <th>Valor recebido</th>
-            <th>Dt. Recebimento</th>
+            <th>Recebimento</th>
             <th>Status</th>
+            <th>Cliente</th>
+            <th>Ordem de serviço</th>
           </tr>
         </thead>
         <tbody>
@@ -44,6 +46,8 @@
             <td>{{c.valorRecebido}}</td>
             <td>{{c.recebimento}}</td>
             <td>{{c.status}}</td>
+            <td>{{c.cliente?.nome}}</td>
+            <td>{{c.ordemServico?.id}}</td>
             <td>
               <button class="btn btn-primary" routerLink="/contas-receber/form/{{c.id}}">
                 <i class="fas fa-edit"></i>
