@@ -1,3 +1,4 @@
+import { AuthGuard } from './../auth.guard';
 import { LayoutComponent } from './../layout/layout.component';
 import { FuncionariosListaComponent } from './funcionarios-lista/funcionarios-lista.component';
 import { FuncionariosFormComponent } from './funcionarios-form/funcionarios-form.component';
@@ -7,7 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
 
 
-  {path: 'funcionarios', component: LayoutComponent, children: [
+  {path: 'funcionarios', component: LayoutComponent, canActivate: [AuthGuard], children: [
 
       { path: 'form', component: FuncionariosFormComponent },
       { path: 'form/:id', component: FuncionariosFormComponent },
