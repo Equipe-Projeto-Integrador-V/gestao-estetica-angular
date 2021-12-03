@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class FornecedoresFormComponent implements OnInit {
 
 
-  fornecedor : Fornecedor;
+    fornecedor : Fornecedor;
 
     //requisição foi um sucesso
     success : boolean = false;
@@ -20,6 +20,9 @@ export class FornecedoresFormComponent implements OnInit {
     errors? : string[] | null;
 
     id? : any;  //id passado via parametro
+
+    distritosBrasil : string[] = ['RO', 'AC', 'AC', 'AM', 'RR', 'PA', 'AP', 'TO', 'MA', 'PI', 'CE', 'RN',
+    'PB', 'PE', 'AL', 'SE', 'BA', 'MG', 'ES', 'RJ', 'SP', 'PR', 'SC', 'RS', 'MS', 'MT', 'GO', 'DF' ];
 
   constructor(private fornecedoresService : FornecedoresService,
               private router : Router,

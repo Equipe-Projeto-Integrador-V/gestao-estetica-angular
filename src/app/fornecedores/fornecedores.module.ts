@@ -5,6 +5,9 @@ import { CommonModule } from '@angular/common';
 import { FornecedoresRoutingModule } from './fornecedores-routing.module';
 import { FornecedoresFormComponent } from './fornecedores-form/fornecedores-form.component';
 import { FornecedoresListaComponent } from './fornecedores-lista/fornecedores-lista.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputMaskModule } from 'primeng/inputmask';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { FornecedoresListaComponent } from './fornecedores-lista/fornecedores-li
   imports: [
     CommonModule,
     FornecedoresRoutingModule,
-    FormsModule
+    FormsModule,
+    DropdownModule,
+    InputMaskModule,
+    InputTextModule
   ], exports: [
     FornecedoresFormComponent,
     FornecedoresListaComponent

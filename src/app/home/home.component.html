@@ -1,4 +1,33 @@
 <h1 class="mt-4">Página Inicial</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Bem Vindo [testando...]</li>
+  <li class="breadcrumb-item active">Bem Vindo [testando...]</li>
 </ol>
+<div class="container-fluid">
+  <div class="row">
+    <!--
+    <div class="col-md-2">
+      <label style="font-weight: bold;">Data de Hoje: {{dataHoje}}</label><br>
+      <label style="font-weight: bold;">Mês: {{mesHoje}}</label>
+      <p-chart type="pie" [data]="data" [options]="chartOptions" [style]="{'width': '10%'}"></p-chart>
+    </div>
+  -->
+    <div class="col-md-2">
+      <p-card>
+        <b>Total de Agendamentos (Hoje):</b><br><br>
+        <p align="center">{{quantidadeAgendamentosHoje}}</p>
+     </p-card>
+    </div>
+    <div class="col-md-2">
+      <p-card>
+        <b>Total de Agendamentos (Mês):</b><br><br>
+        <p align="center">{{quantidadeAgendamentosMes}}</p>
+     </p-card>
+    </div>
+    <div class="col-md-2">
+      <p-card>
+        <b>Ordens de Serviço em: ABERTO (Hoje):</b><br><br>
+        <p align="center">{{quantidadeAgendamentosHoje}}</p>
+     </p-card>
+    </div>
+  </div>
+</div>

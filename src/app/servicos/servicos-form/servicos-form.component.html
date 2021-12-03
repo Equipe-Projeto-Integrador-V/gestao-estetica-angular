@@ -2,7 +2,7 @@
 <ol class="breadcrumb mb-4">
   <li class="breadcrumb-item active">{{ servico.id ? 'Edição' : 'Cadastro'}}</li>
 </ol>
-<div class="container">
+<div class="container-fluid">
   <form #servicoForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off">
     <!--alerta inicio-->
     <div class="row">
@@ -32,16 +32,18 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="form-group">
           <label>Preço de Custo: *</label>
-          <input type="text" class="form-control" [(ngModel)]="servico.precoCusto" name="precoCusto" />
+          <!--<input type="text" class="form-control" [(ngModel)]="servico.precoCusto" name="precoCusto" /> -->
+          <p-inputNumber [(ngModel)]="servico.precoCusto" mode="decimal" locale="pt-BR" [minFractionDigits]="2" name="precoCusto" ></p-inputNumber>
         </div>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <div class="form-group">
           <label>Preço de Venda: *</label>
-          <input type="text" class="form-control" [(ngModel)]="servico.precoVenda" name="precoVenda"/>
+          <!-- <input type="text" class="form-control" [(ngModel)]="servico.precoVenda" name="precoVenda"/> -->
+          <p-inputNumber [(ngModel)]="servico.precoVenda" mode="decimal" locale="pt-BR" [minFractionDigits]="2" name="precoVenda" ></p-inputNumber>
         </div>
       </div>
     </div>

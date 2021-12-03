@@ -13,6 +13,8 @@ import { ContaAReceber } from '../contas-receber.model';
   styleUrls: ['./contas-receber-form.component.css'],
 })
 export class ContasReceberFormComponent implements OnInit {
+
+  statusContasReceber : string[] = ['ABERTO', 'CANCELADO', 'RECEBIDO'];
   contaAReceber: ContaAReceber;
   errors?: string[] | null;
   id?: number; //id passado via parametro
@@ -51,7 +53,7 @@ export class ContasReceberFormComponent implements OnInit {
     this.clientesService
       .getClientes()
       .subscribe((response) => (this.clientes = response));
-      
+
     this.ordensDeServicoService
       .getOrdemServico()
       .subscribe((response) => (this.ordensDeServico = response));

@@ -24,6 +24,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
+import { InputMaskModule } from 'primeng/inputmask'
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { PanelModule } from "primeng/panel";
+import { ChartModule } from 'primeng/chart';
+import { CardModule } from 'primeng/card';
+
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, LoginComponent, LayoutComponent],
@@ -41,7 +48,13 @@ import { LayoutComponent } from './layout/layout.component';
     OrdensDeServicoModule,
     ContasReceberModule,
     ContasPagarModule,
-    FormsModule
+    FormsModule,
+    InputMaskModule,
+    DialogModule,
+    ButtonModule,
+    PanelModule,
+    ChartModule,
+    CardModule
   ],
   providers: [
     ClientesService,
