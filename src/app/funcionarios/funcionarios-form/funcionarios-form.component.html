@@ -2,13 +2,7 @@
 <ol class="breadcrumb mb-4">
   <li class="breadcrumb-item active">{{ funcionario.id ? 'Edição' : 'Cadastro'}}</li>
 </ol>
-<div class="container">
-  <div class="alert alert-warning" role="alert">
-    <h4 class="alert-heading">Aviso!!!</h4>
-    <p>Visibilidade temporária.</p>
-    <hr>
-    <p class="mb-0">Após implementar a autenticação, 'Funcionarios' só estará disponivel no navbar de usuários com ROLES 'Admin'.</p>
-  </div>
+<div class="container-fluid">
   <form #funcionarioForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off">
     <!--alerta inicio-->
     <div class="row">
@@ -41,13 +35,14 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>CPF: *</label>
-          <input type="text" class="form-control" [(ngModel)]="funcionario.cpf" name="cpf"/>
+          <input type="text" class="form-control" [(ngModel)]="funcionario.cpf" name="cpf" maxlength="11"/>
         </div>
       </div>
       <div class="col-md-2">
         <div class="form-group">
           <label>Telefone:</label>
-          <input type="text" class="form-control" [(ngModel)]="funcionario.telefone" name="telefone"/>
+          <p-inputMask mask="(99) 999-999999" [(ngModel)]="funcionario.telefone" name="telefone" placeholder="(DD) XXX-XXXXXX"></p-inputMask>
+          <!-- <input type="text" class="form-control" [(ngModel)]="funcionario.telefone" name="telefone"/> -->
         </div>
       </div>
     </div>
@@ -74,23 +69,22 @@
           <input type="text" class="form-control" [(ngModel)]="funcionario.login" name="login"/>
         </div>
       </div>
-      <div class="col-md-1">
-        <div class="form-group">
-          <label>Senha:</label>
-          <input type="password" class="form-control" [(ngModel)]="funcionario.senha" name="minhaSenha" id="minhaSenha"/>
-
-        </div>
-      </div>
-      <div class="col-md-1">
+      <div class="col-md-2">
         <div class="form-group">
           <label>Permissão:</label>
           <select [(ngModel)]="funcionario.permissao" class="form-control" name="tipoAutorizacao">
             <option value="">Selecione...</option>
             <option *ngFor="let tipoAutorizacao of autorizacoes" [value]="tipoAutorizacao">{{tipoAutorizacao}}</option>
           </select>
-
-
-
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Senha:</label>
+          <p-password [(ngModel)]="funcionario.senha" [toggleMask]="true" name="senha"></p-password>
+          <!--<input type="password" class="form-control" [(ngModel)]="funcionario.senha" name="minhaSenha" id="minhaSenha"/>-->
         </div>
       </div>
     </div>

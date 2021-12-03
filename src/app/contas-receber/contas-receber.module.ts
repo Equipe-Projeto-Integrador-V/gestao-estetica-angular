@@ -12,6 +12,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import { ContasReceberRoutingModule } from './contas-receber-routing.module';
 import { ContasReceberFormComponent } from './contas-receber-form/contas-receber-form.component';
 import { ContasReceberListaComponent } from './contas-receber-lista/contas-receber-lista.component';
+import {InputTextModule} from 'primeng/inputtext';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ContasReceberListaComponent } from './contas-receber-lista/contas-receb
     BrowserAnimationsModule,
     CalendarModule,
     InputNumberModule,
-    DropdownModule
+    DropdownModule,
+    InputTextModule
   ], exports: [
     ContasReceberFormComponent,
     ContasReceberListaComponent

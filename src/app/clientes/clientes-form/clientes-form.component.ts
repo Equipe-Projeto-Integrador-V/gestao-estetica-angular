@@ -18,6 +18,9 @@ export class ClientesFormComponent implements OnInit {
   //array responsavel por receber os erros do controller-advice no backend
   errors? : string[] | null;
 
+  distritosBrasil : string[] = ['RO', 'AC', 'AC', 'AM', 'RR', 'PA', 'AP', 'TO', 'MA', 'PI', 'CE', 'RN',
+                                'PB', 'PE', 'AL', 'SE', 'BA', 'MG', 'ES', 'RJ', 'SP', 'PR', 'SC', 'RS', 'MS', 'MT', 'GO', 'DF' ];
+
   id? : any;  //id passado via parametro
 
   constructor(
@@ -76,6 +79,6 @@ export class ClientesFormComponent implements OnInit {
   }
 
   voltarParaListagem(){
-    this.router.navigate( ['/clientes-lista']);
+    this.router.navigate( ['/clientes/lista']);
   }
 }

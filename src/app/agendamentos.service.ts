@@ -29,6 +29,14 @@ export class AgendamentosService {
     return this.http.get<any>(url);
   }
 
+  buscarQuantidadeHoje(): Observable<any>{
+      return this.http.get<any>(this.apiURL+'/quantidadeHoje');
+  }
+
+  buscarQuantidadeMes(): Observable<any>{
+    return this.http.get<any>(this.apiURL+'/quantidadeMes');
+}
+
   getClientes() : Observable<AgendamentoBusca[]>{
 
     return this.http.get<AgendamentoBusca[]>(this.apiURL+'/listar');

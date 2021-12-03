@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  adminOrRole = this.authService.isAuthenticatedAdmin();
 
   ativarAbaFuncionario? : boolean;
 
@@ -21,6 +22,8 @@ export class SidebarComponent implements OnInit {
 
     this.funcionarioLogado = this.authService.getFuncionarioLogado();
     this.desativarFuncionario();
+    console.log(this.ativarAbaFuncionario)
+    console.log(this.adminOrRole[0])
   }
 
   logout(){
@@ -29,7 +32,10 @@ export class SidebarComponent implements OnInit {
   }
 
   desativarFuncionario(){
-    if(this.authService.isAuthenticatedAdmin() === 'ROLE_USER'){
+
+
+
+    if(this.adminOrRole[0] === 'ROLE_USER'){
       this.ativarAbaFuncionario = true;
     } else {
       this.ativarAbaFuncionario = false;

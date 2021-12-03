@@ -4,7 +4,7 @@
     {{ contaAReceber.id ? "Edição" : "Cadastro" }}
   </li>
 </ol>
-<div class="container">
+<div class="container-fluid">
   <form #clienteForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off">
     <!--alerta inicio-->
     <div class="row">
@@ -24,7 +24,7 @@
     <!--alerta fim-->
 
     <div class="row">
-      <div class="col-md-12" *ngIf="contaAReceber.id">
+      <div class="col-md-2" *ngIf="contaAReceber.id">
         <div class="form-group">
           <label for="id">ID:</label><br />
           <p-inputNumber
@@ -109,20 +109,15 @@
       </div>
 
       <div class="col-md-4">
-        <div class="form-group">
-          <label>Status:</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="contaAReceber.status"
-            name="status"
-          />
-        </div>
+        <label>Status:</label>
+        <!--<input type="text" class="p-inputtext" [(ngModel)]="contaAReceber.status" name="status">-->
+        <p-dropdown [options]="statusContasReceber" [(ngModel)]="contaAReceber.status" name="uf" ></p-dropdown>
+
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-5">
         <div class="form-group">
           <label for="clientes">Cliente: *</label>
           <p-dropdown

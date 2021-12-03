@@ -8,6 +8,8 @@ import * as jQuery from 'jquery';
 })
 export class LayoutComponent implements AfterViewInit {
 
+  display? : boolean;
+
   constructor() { }
 
   ngAfterViewInit(){
@@ -28,6 +30,10 @@ export class LayoutComponent implements AfterViewInit {
           $("body").toggleClass("sb-sidenav-toggled");
       });
   })(jQuery);
+  }
+
+  showDisplay(){
+    this.display = true;
   }
 
 }
