@@ -17,10 +17,32 @@ export class ContasPagarService {
   }
 
   cadastrarNovaContaAPagar(conta: ContaAPagar): Observable<ContaAPagar> {
-    return this.http.post(this.apiURL, conta);
+    return this.http.post(this.apiURL, this.prepararModel(conta));
   }
 
   atualizarContaAPagar(conta: ContaAPagar): Observable<ContaAPagar> {
-    return this.http.put(`${this.apiURL}/${conta.id}`, conta);
+    return this.http.put(
+      `${this.apiURL}/${conta.id}`,
+      this.prepararModel(conta)
+    );
+  }
+
+  prepararModel(conta: ContaAPagar): {} {
+    const options: Intl.DateTimeFormatOptions = {
+      month: '2-digit',
+      day: '2-digit',
+      year: 'numeric',
+    };
+
+    return {
+      id: conta.id,
+      emissao: conta.emissao?.toLocaleDateString('en-US', options),
+      vencimento: conta.vencimento?.toLocaleDateString('en-US', options),
+      pagamento: conta.pagamento?.toLocaleDateString('en-US', options),
+      valor: conta.valor,
+      valorRecebido: conta.valorPago,
+      status: conta.status,
+      fornecedor: conta.fornecedor?.id,
+    };
   }
 }
