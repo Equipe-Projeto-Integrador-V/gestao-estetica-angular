@@ -6,15 +6,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-
-  {path: 'contas-receber', component: LayoutComponent, canActivate: [AuthGuard], children: [
-  { path: 'form', component: ContasReceberFormComponent },
-  { path: 'form/:id', component: ContasReceberFormComponent },
-  { path: 'lista', component: ContasReceberListaComponent },
-  { path: '', redirectTo: '/contas-receber/lista', pathMatch: 'full'}
-
-  ]}
-
+  {
+    path: 'contas-receber',
+    component: LayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'form', component: ContasReceberFormComponent },
+      { path: 'form/:id', component: ContasReceberFormComponent },
+      { path: 'lista', component: ContasReceberListaComponent },
+      { path: '', redirectTo: '/contas-receber/lista', pathMatch: 'full' },
+    ],
+  },
 ];
 
 @NgModule({
