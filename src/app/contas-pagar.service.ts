@@ -27,6 +27,10 @@ export class ContasPagarService {
     );
   }
 
+  excluirContaAReceber(conta: ContaAPagar): Observable<ContaAPagar> {
+    return this.http.delete<ContaAPagar>(`${this.apiURL}/${conta.id}`);
+  }
+
   prepararModel(conta: ContaAPagar): {} {
     const options: Intl.DateTimeFormatOptions = {
       month: '2-digit',
