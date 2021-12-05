@@ -29,7 +29,6 @@ export class ContasReceberListaComponent implements OnInit {
         b: ContaAReceber
       ) {
         if (a.id && b.id) {
-          console.log(a.id, b.id);
           if (a.id > b.id) {
             return 1;
           }

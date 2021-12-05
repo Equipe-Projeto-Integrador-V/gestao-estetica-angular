@@ -1,1 +1,153 @@
-<p>contas-pagar-form works!</p>
+<h1 class="breadcrumb-item active col-md-6">Contas a pagar</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">
+    {{ contaAPagar.id ? "Edição" : "Cadastro" }}
+  </li>
+</ol>
+<div class="container-fluid">
+  <form #clienteForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <!--alerta inicio-->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf="success == true">
+          Conta a pagar salva/atualizada com sucesso!!!
+        </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngFor="let erro of errors"
+        >
+          {{ erro }}
+        </div>
+      </div>
+    </div>
+    <!--alerta fim-->
+
+    <div class="row">
+      <div class="col-md-2" *ngIf="contaAPagar.id">
+        <div class="form-group">
+          <label for="id">ID:</label><br />
+          <p-inputNumber
+            [disabled]="true"
+            name="id"
+            [ngModel]="contaAPagar.id"
+          ></p-inputNumber>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Emissão: *</label>
+          <p-calendar
+            [showIcon]="true"
+            name="emissao"
+            [(ngModel)]="contaAPagar.emissao"
+            dateFormat="dd/mm/yy"
+            dataType="date"
+          ></p-calendar>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Vencimento: *</label>
+          <p-calendar
+            [showIcon]="true"
+            name="vencimento"
+            [(ngModel)]="contaAPagar.vencimento"
+            dateFormat="dd/mm/yy"
+            dataType="date"
+          ></p-calendar>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="fornecedores">Fornecedor: *</label>
+          <p-dropdown
+            [options]="fornecedores"
+            [(ngModel)]="contaAPagar.fornecedor"
+            optionLabel="nome"
+            name="clientes"
+            id="clientes"
+          ></p-dropdown>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="valor">Valor: *</label>
+          <p-inputNumber
+            id="valor"
+            name="valor"
+            [(ngModel)]="contaAPagar.valor"
+            mode="decimal"
+            locale="pt-BR"
+            [minFractionDigits]="2"
+            [maxFractionDigits]="2"
+          ></p-inputNumber>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Valor pago:</label>
+          <p-inputNumber
+            id="valorPago"
+            name="valorPago"
+            [(ngModel)]="contaAPagar.valorPago"
+            mode="decimal"
+            locale="pt-BR"
+            [minFractionDigits]="2"
+            [maxFractionDigits]="2"
+          ></p-inputNumber>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Pagamento: *</label>
+          <p-calendar
+            [showIcon]="true"
+            name="pagamento"
+            [(ngModel)]="contaAPagar.pagamento"
+            dateFormat="dd/mm/yy"
+            dataType="date"
+          ></p-calendar>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <label>Status:</label>
+        <!--<input type="text" class="p-inputtext" [(ngModel)]="contaAPagar.status" name="status">-->
+        <p-dropdown [options]="statusContasPagar" [(ngModel)]="contaAPagar.status" name="uf" ></p-dropdown>
+
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-success" *ngIf="!contaAPagar.id">
+          <i class="fa fa-save"></i> Salvar
+        </button>
+        <button type="submit" class="btn btn-primary" *ngIf="contaAPagar.id">
+          <i class="fa fa-sync-alt"></i> Atualizar
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger ml-2"
+          (click)="voltarParaListagem()"
+        >
+          <i class="fa fa-arrow-alt-circle-left"></i> Voltar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
