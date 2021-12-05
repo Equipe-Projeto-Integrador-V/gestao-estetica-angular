@@ -64,6 +64,7 @@ export class ContasPagarFormComponent implements OnInit {
 
   onSubmit() {
     if (this.id) {
+      console.log(this.contaAPagar)
       this.contasPagarService.atualizarContaAPagar(this.contaAPagar).subscribe(
         (response) => {
           this.success = true;

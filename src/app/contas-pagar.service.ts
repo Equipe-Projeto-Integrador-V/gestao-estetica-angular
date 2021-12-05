@@ -16,6 +16,10 @@ export class ContasPagarService {
     return this.http.get(`${this.apiURL}/${conta.id}`);
   }
 
+  getContasAPagar(): Observable<ContaAPagar[]> {
+    return this.http.get<ContaAPagar[]>(this.apiURL);
+  }
+
   cadastrarNovaContaAPagar(conta: ContaAPagar): Observable<ContaAPagar> {
     return this.http.post(this.apiURL, this.prepararModel(conta));
   }
@@ -27,7 +31,7 @@ export class ContasPagarService {
     );
   }
 
-  excluirContaAReceber(conta: ContaAPagar): Observable<ContaAPagar> {
+  excluirContaAPagar(conta: ContaAPagar): Observable<ContaAPagar> {
     return this.http.delete<ContaAPagar>(`${this.apiURL}/${conta.id}`);
   }
 
