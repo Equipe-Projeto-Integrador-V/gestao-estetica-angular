@@ -48,7 +48,7 @@ export class ContasPagarService {
       vencimento: conta.vencimento?.toLocaleDateString('en-US', options),
       pagamento: conta.pagamento?.toLocaleDateString('en-US', options),
       valor: conta.valor,
-      valorRecebido: conta.valorPago,
+      valorPago: conta.valorPago,
       status: conta.status,
       fornecedor: conta.fornecedor?.id,
     };

@@ -29,7 +29,6 @@ export class ContasPagarListaComponent implements OnInit {
         b: ContaAPagar
       ) {
         if (a.id && b.id) {
-          console.log(a.id, b.id);
           if (a.id > b.id) {
             return 1;
           }
