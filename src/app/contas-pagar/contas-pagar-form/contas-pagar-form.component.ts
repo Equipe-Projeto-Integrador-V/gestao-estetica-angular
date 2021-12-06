@@ -1,3 +1,4 @@
+import { StatusEnum } from './../../enums/status-enum';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContasPagarService } from 'src/app/contas-pagar.service';
@@ -11,7 +12,7 @@ import { ContaAPagar } from '../contas-pagar.model';
   styleUrls: ['./contas-pagar-form.component.css'],
 })
 export class ContasPagarFormComponent implements OnInit {
-  statusContasPagar: string[] = ['ABERTO', 'CANCELADO', 'RECEBIDO'];
+  statusContasPagar: string[] = [StatusEnum.ABERTO, StatusEnum.CANCELADO, StatusEnum.RECEBIDO];
   contaAPagar: ContaAPagar;
   errors?: string[] | null;
   id?: number; //id passado via parametro
@@ -70,6 +71,7 @@ export class ContasPagarFormComponent implements OnInit {
           this.errors = null;
         },
         (errorResponse) => {
+          console.log(errorResponse)
           this.errors = ['Erro ao atualizar o cliente'];
         }
       );

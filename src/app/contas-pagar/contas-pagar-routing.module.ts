@@ -9,6 +9,7 @@ const routes: Routes = [
 
   {path: 'contas-pagar', component: LayoutComponent, canActivate: [AuthGuard], children: [
   {path : 'form', component: ContasPagarFormComponent },
+  {path :  'form/:id', component: ContasPagarFormComponent},
   {path : 'lista', component: ContasPagarListaComponent },
   {path: '', redirectTo: '/contas-pagar/lista', pathMatch: 'full'}
   ]}
