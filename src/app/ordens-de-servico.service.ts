@@ -1,3 +1,4 @@
+import { Status } from './home/status';
 import { OrdemServicoLista } from './ordens-de-servico/ordemServicoLista';
 import { OrdemServico } from './ordens-de-servico/ordemServico';
 import { HttpClient } from '@angular/common/http';
@@ -31,6 +32,10 @@ export class OrdensDeServicoService {
   getOrdemServico() : Observable<OrdemServico[]>{
 
     return this.http.get<OrdemServico[]>(this.apiURL);
+  }
+
+  getTotalStatusOs(status : string) : Observable<Status>{
+    return this.http.get<Status>(`${this.apiURL}/totalOsStatus?status=${status}`);
   }
 
 

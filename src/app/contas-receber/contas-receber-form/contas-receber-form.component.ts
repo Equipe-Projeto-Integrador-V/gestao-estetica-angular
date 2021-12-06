@@ -1,3 +1,4 @@
+import { StatusEnum } from './../../enums/status-enum';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClientesService } from 'src/app/clientes.service';
@@ -14,7 +15,8 @@ import { ContaAReceber } from '../contas-receber.model';
 })
 export class ContasReceberFormComponent implements OnInit {
 
-  statusContasReceber : string[] = ['ABERTO', 'CANCELADO', 'RECEBIDO'];
+  statusContasReceber : string[] = [StatusEnum.ABERTO, StatusEnum.CANCELADO, StatusEnum.RECEBIDO];
+
   contaAReceber: ContaAReceber;
   errors?: string[] | null;
   id?: number; //id passado via parametro

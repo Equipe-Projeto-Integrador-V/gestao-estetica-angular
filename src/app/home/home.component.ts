@@ -1,3 +1,6 @@
+import { StatusEnum } from './../enums/status-enum';
+import { Status } from './status';
+import { OrdensDeServicoService } from 'src/app/ordens-de-servico.service';
 import { AgendamentosService } from './../agendamentos.service';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -18,45 +21,21 @@ export class HomeComponent implements OnInit {
   subscription?: Subscription;
   quantidadeAgendamentosHoje : any;
   quantidadeAgendamentosMes : any;
+  totalStatusOs? : string;
+  status? : Status;
 
 
 
-
-
-  constructor(private agendamentoService : AgendamentosService) {
+  constructor(private agendamentoService : AgendamentosService, private ordemServicoService : OrdensDeServicoService) {
     this.agendamentosHoje();
     this.agendamentosMes();
+    this.totalOrdemServicoPorStatus(StatusEnum.ABERTO);
 
    }
 
   ngOnInit(): void {
-
-
   }
 
-
-  graficoPizza(){
-
-    this.data = {
-
-      labels: ['Mês','Hoje'],
-      datasets: [
-          {
-              data: [300, this.quantidadeAgendamentosHoje],
-              backgroundColor: [
-                  "#42A5F5",
-                  "#66BB6A",
-
-              ],
-              hoverBackgroundColor: [
-                  "#64B5F6",
-                  "#81C784",
-
-              ]
-          }
-      ]
-  };
-  }
 
 
   agendamentosHoje(){
@@ -71,5 +50,13 @@ export class HomeComponent implements OnInit {
       this.quantidadeAgendamentosMes = response;
       });
   }
+
+  totalOrdemServicoPorStatus(status : string){
+
+      this.ordemServicoService.getTotalStatusOs(status).subscribe( response => {this.status = response; console.log(this.status)});
+    }
+
+
+
 
 }
