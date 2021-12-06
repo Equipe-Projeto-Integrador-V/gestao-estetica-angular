@@ -3,12 +3,12 @@
     <div class="sb-sidenav-menu">
       <div class="nav">
         <div class="sb-sidenav-menu-heading">Inicio</div>
-        <a class="nav-link" routerLink="home">
+        <a class="nav-link" routerLink="/home">
           <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
           Página Inicial
         </a>
         <div class="sb-sidenav-menu-heading">Cadastros</div>
-        <a class="nav-link collapsed" routerLink="clientes-lista" data-toggle="collapse" data-target="#collapseLayouts"
+        <a class="nav-link collapsed" routerLink="/clientes" data-toggle="collapse" data-target="#collapseLayouts"
           aria-expanded="false" aria-controls="collapseLayouts">
           <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
           Clientes
@@ -16,7 +16,8 @@
           </div>
         </a>
 
-        <a class="nav-link collapsed" routerLink="funcionarios-lista" data-toggle="collapse"
+
+        <a class="nav-link collapsed" routerLink="/funcionarios" data-toggle="collapse" [hidden]="ativarAbaFuncionario"
           data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
           <div class="sb-nav-link-icon"><i class="fas fa-user-tie"></i></div>
           Funcionarios
@@ -24,7 +25,7 @@
           </div>
         </a>
 
-        <a class="nav-link collapsed" routerLink="servicos-lista" data-toggle="collapse" data-target="#collapseLayouts"
+        <a class="nav-link collapsed" routerLink="/servicos" data-toggle="collapse" data-target="#collapseLayouts"
           aria-expanded="false" aria-controls="collapseLayouts">
           <div class="sb-nav-link-icon"><i class="fas fa-briefcase"></i></div>
           Serviços
@@ -32,7 +33,7 @@
           </div>
         </a>
 
-        <a class="nav-link collapsed" routerLink="fornecedores-lista" data-toggle="collapse"
+        <a class="nav-link collapsed" routerLink="/fornecedores" data-toggle="collapse"
           data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
           <div class="sb-nav-link-icon"><i class="fas fa-truck"></i></div>
           Fornecedores
@@ -40,7 +41,7 @@
           </div>
         </a>
 
-        <a class="nav-link collapsed" routerLink="agendamentos-lista" data-toggle="collapse"
+        <a class="nav-link collapsed" routerLink="/agendamentos" data-toggle="collapse"
           data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
           <div class="sb-nav-link-icon"><i class="fas fa-calendar-alt"></i></div>
           Agendamentos
@@ -48,7 +49,7 @@
           </div>
         </a>
 
-        <a class="nav-link collapsed" routerLink="ordens-de-servicos-lista" data-toggle="collapse"
+        <a class="nav-link collapsed" routerLink="/ordens-de-servicos" data-toggle="collapse"
           data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
           <div class="sb-nav-link-icon"><i class="fas fa-sticky-note"></i></div>
           Ordens de Serviço
@@ -56,7 +57,7 @@
           </div>
         </a>
 
-        <a class="nav-link collapsed" routerLink="contas-receber-lista" data-toggle="collapse"
+        <a class="nav-link collapsed" routerLink="/contas-receber" data-toggle="collapse"
           data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
           <div class="sb-nav-link-icon"><i class="fas fa-money-bill-wave"></i></div>
           Contas a receber
@@ -64,10 +65,18 @@
           </div>
         </a>
 
-        <a class="nav-link collapsed" routerLink="contas-pagar-form" data-toggle="collapse"
+        <a class="nav-link collapsed" routerLink="/contas-pagar" data-toggle="collapse"
           data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
           <div class="sb-nav-link-icon"><i class="fas fa-wallet"></i></div>
           Contas a pagar
+          <div class="sb-sidenav-collapse-arrow">
+          </div>
+        </a>
+        <div class="sb-sidenav-menu-heading">Logout</div>
+        <a class="nav-link collapsed" (click)="logout();" href="#" data-toggle="collapse"
+          data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+          <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
+          Sair
           <div class="sb-sidenav-collapse-arrow">
           </div>
         </a>
@@ -75,7 +84,7 @@
     </div>
     <div class="sb-sidenav-footer">
       <div class="small">Logado como:</div>
-      Não implementado ainda...
+      {{ funcionarioLogado }}
     </div>
   </nav>
 </div>

@@ -1,10 +1,10 @@
-<h1 class="mt-4">Contas a receber</h1>
+<h1 class="breadcrumb-item active col-md-6">Contas a receber</h1>
 <ol class="breadcrumb mb-4">
   <li class="breadcrumb-item active">
     {{ contaAReceber.id ? "Edição" : "Cadastro" }}
   </li>
 </ol>
-<div class="container">
+<div class="container-fluid">
   <form #clienteForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off">
     <!--alerta inicio-->
     <div class="row">
@@ -24,7 +24,7 @@
     <!--alerta fim-->
 
     <div class="row">
-      <div class="col-md-12" *ngIf="contaAReceber.id">
+      <div class="col-md-2" *ngIf="contaAReceber.id">
         <div class="form-group">
           <label for="id">ID:</label><br />
           <p-inputNumber
@@ -75,11 +75,9 @@
           ></p-calendar>
         </div>
       </div>
-
     </div>
 
     <div class="row">
-      
       <div class="col-md-4">
         <div class="form-group">
           <label for="valor">Valor: *</label>
@@ -111,14 +109,37 @@
       </div>
 
       <div class="col-md-4">
+        <label>Status:</label>
+        <!--<input type="text" class="p-inputtext" [(ngModel)]="contaAReceber.status" name="status">-->
+        <p-dropdown [options]="statusContasReceber" [(ngModel)]="contaAReceber.status" name="uf" ></p-dropdown>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-5">
         <div class="form-group">
-          <label>Status:</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="contaAReceber.status"
-            name="status"
-          />
+          <label for="clientes">Cliente: *</label>
+          <p-dropdown
+            [options]="clientes"
+            [(ngModel)]="contaAReceber.cliente"
+            optionLabel="nome"
+            name="clientes"
+            id="clientes"
+          ></p-dropdown>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="ordensDeServico">Ordem de serviço: *</label>
+          <p-dropdown
+            [options]="ordensDeServico"
+            [(ngModel)]="contaAReceber.ordemServico"
+            optionLabel="id"
+            name="ordensDeServico"
+            id="ordensDeServico"
+          ></p-dropdown>
         </div>
       </div>
     </div>

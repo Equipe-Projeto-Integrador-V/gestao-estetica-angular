@@ -5,6 +5,9 @@ import { ClientesRoutingModule } from './clientes-routing.module';
 import { ClientesFormComponent } from './clientes-form/clientes-form.component';
 import { FormsModule } from '@angular/forms';
 import { ClientesListaComponent } from './clientes-lista/clientes-lista.component';
+import { InputMaskModule } from 'primeng/inputmask';
+import { DropdownModule } from 'primeng/dropdown';
+
 
 
 @NgModule({
@@ -15,7 +18,9 @@ import { ClientesListaComponent } from './clientes-lista/clientes-lista.componen
   imports: [
     CommonModule,
     ClientesRoutingModule,
-    FormsModule
+    FormsModule,
+    InputMaskModule,
+    DropdownModule
   ], exports: [
     ClientesFormComponent,
     ClientesListaComponent

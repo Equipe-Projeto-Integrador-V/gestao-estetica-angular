@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ContaAReceber } from '../contas-receber.model';
 import { ContasReceberService } from '../../contas-receber.service';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-contas-receber-lista',
@@ -22,13 +23,26 @@ export class ContasReceberListaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.contasPagarService
-      .getContasAReceber()
-      .subscribe((response) => (this.contasReceber = response));
+    this.contasPagarService.getContasAReceber().subscribe((response) => {
+      this.contasReceber = response.sort(function (
+        a: ContaAReceber,
+        b: ContaAReceber
+      ) {
+        if (a.id && b.id) {
+          if (a.id > b.id) {
+            return 1;
+          }
+          if (a.id < b.id) {
+            return -1;
+          }
+        }
+        return 0;
+      });
+    });
   }
 
   novoCadastro() {
-    this.router.navigate(['/contas-receber-form']);
+    this.router.navigate(['/contas-receber/form']);
   }
 
   preparaDelecao(c: ContaAReceber) {

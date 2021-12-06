@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ClientesService } from 'src/app/clientes.service';
+import { Cliente } from 'src/app/clientes/cliente';
 import { ContasReceberService } from 'src/app/contas-receber.service';
+import { OrdensDeServicoService } from 'src/app/ordens-de-servico.service';
+import { OrdemServico } from 'src/app/ordens-de-servico/ordemServico';
 import { ContaAReceber } from '../contas-receber.model';
 
 @Component({
@@ -9,17 +13,25 @@ import { ContaAReceber } from '../contas-receber.model';
   styleUrls: ['./contas-receber-form.component.css'],
 })
 export class ContasReceberFormComponent implements OnInit {
+
+  statusContasReceber : string[] = ['ABERTO', 'CANCELADO', 'RECEBIDO'];
   contaAReceber: ContaAReceber;
   errors?: string[] | null;
   id?: number; //id passado via parametro
   success: boolean = false;
+  clientes: Cliente[];
+  ordensDeServico: OrdemServico[]
 
   constructor(
     private contasReceberService: ContasReceberService,
+    private clientesService: ClientesService,
+    private ordensDeServicoService: OrdensDeServicoService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
     this.contaAReceber = new ContaAReceber();
+    this.clientes = [];
+    this.ordensDeServico = []
   }
 
   ngOnInit(): void {
@@ -37,6 +49,14 @@ export class ContasReceberFormComponent implements OnInit {
           );
       }
     });
+
+    this.clientesService
+      .getClientes()
+      .subscribe((response) => (this.clientes = response));
+
+    this.ordensDeServicoService
+      .getOrdemServico()
+      .subscribe((response) => (this.ordensDeServico = response));
   }
 
   carregarModel(response: any) {
@@ -52,7 +72,7 @@ export class ContasReceberFormComponent implements OnInit {
   }
 
   voltarParaListagem() {
-    this.router.navigate(['/contas-receber-lista']);
+    this.router.navigate(['/contas-receber/lista']);
   }
 
   onSubmit() {

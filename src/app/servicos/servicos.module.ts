@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { ServicosRoutingModule } from './servicos-routing.module';
 import { ServicosFormComponent } from './servicos-form/servicos-form.component';
 import { ServicosListaComponent } from './servicos-lista/servicos-lista.component';
+import { InputNumberModule } from 'primeng/inputnumber';
+
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { ServicosListaComponent } from './servicos-lista/servicos-lista.componen
   imports: [
     CommonModule,
     ServicosRoutingModule,
-    FormsModule
+    FormsModule,
+    InputNumberModule
   ], exports: [
     ServicosFormComponent,
     ServicosListaComponent

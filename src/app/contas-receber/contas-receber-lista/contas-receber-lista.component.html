@@ -1,8 +1,8 @@
-<h1 class="mt-4">Contas a receber</h1>
+<h1 class="breadcrumb-item active col-md-6">Contas a receber</h1>
 <ol class="breadcrumb mb-4">
   <li class="breadcrumb-item active">Consulta</li>
 </ol>
-<div class="container">
+<div class="container-fluid">
       <!--alerta inicio-->
       <div class="row">
         <div class="col-md-12">
@@ -27,12 +27,15 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Dt. Emissão</th>
-            <th>Dt. Vencimento</th>
+            <th>Emissão</th>
+            <th>Vencimento</th>
             <th>Valor</th>
             <th>Valor recebido</th>
-            <th>Dt. Recebimento</th>
+            <th>Recebimento</th>
             <th>Status</th>
+            <th>Cliente</th>
+            <th>Ordem de serviço</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -44,8 +47,10 @@
             <td>{{c.valorRecebido}}</td>
             <td>{{c.recebimento}}</td>
             <td>{{c.status}}</td>
+            <td>{{c.cliente?.nome}}</td>
+            <td>{{c.ordemServico?.id}}</td>
             <td>
-              <button class="btn btn-primary" routerLink="/contas-receber-form/{{c.id}}">
+              <button class="btn btn-primary" routerLink="/contas-receber/form/{{c.id}}">
                 <i class="fas fa-edit"></i>
               </button>
 

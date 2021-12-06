@@ -7,4 +7,5 @@ export class Funcionario{
   email? : string;
   telefone? : string;
   comissao? : number;
+  permissao? : string;
 }

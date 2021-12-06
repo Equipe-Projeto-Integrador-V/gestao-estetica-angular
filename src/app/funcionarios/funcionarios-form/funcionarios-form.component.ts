@@ -20,12 +20,17 @@ export class FuncionariosFormComponent implements OnInit {
 
    id? : any;  //id passado via parametro
 
+
+   autorizacoes : string[];
+   tipoAutorizacao?: string;
+
   constructor(
     private funcionarioService : FuncionariosService,
     private router : Router,
     private activatedRouter : ActivatedRoute
     ) {
     this.funcionario = new Funcionario();
+    this.autorizacoes = ['USER', 'ADMIN'];
   }
 
   ngOnInit(): void {
@@ -73,7 +78,7 @@ export class FuncionariosFormComponent implements OnInit {
   }
 
   voltarParaListagem(){
-    this.router.navigate( ['/funcionarios-lista']);
+    this.router.navigate( ['/funcionarios/lista']);
   }
 
 

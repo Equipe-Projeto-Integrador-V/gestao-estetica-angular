@@ -7,11 +7,13 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CalendarModule} from 'primeng/calendar';
 import {InputNumberModule} from 'primeng/inputnumber';
-
+import {DropdownModule} from 'primeng/dropdown';
+import {InputTextModule} from 'primeng/inputtext';
 
 import { ContasReceberRoutingModule } from './contas-receber-routing.module';
 import { ContasReceberFormComponent } from './contas-receber-form/contas-receber-form.component';
 import { ContasReceberListaComponent } from './contas-receber-lista/contas-receber-lista.component';
+
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { ContasReceberListaComponent } from './contas-receber-lista/contas-receb
     BrowserModule,
     BrowserAnimationsModule,
     CalendarModule,
-    InputNumberModule
+    InputNumberModule,
+    DropdownModule,
+    InputTextModule
   ], exports: [
     ContasReceberFormComponent,
     ContasReceberListaComponent
