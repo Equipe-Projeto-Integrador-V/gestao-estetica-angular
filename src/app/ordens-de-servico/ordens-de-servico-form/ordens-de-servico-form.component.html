@@ -76,7 +76,7 @@
             title="Selecione...">
             <option value="">Selecione...</option>
             <option *ngFor="let a of agendamentos" [ngValue]="a.id">
-              {{ a.data }}
+              {{ a.cliente.nome + " - " + a.data + " - " + a.hora }}
             </option>
           </select>
         </div>
